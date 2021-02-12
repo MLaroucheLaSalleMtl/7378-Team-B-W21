@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4866578505995019027}
   - component: {fileID: 7732959660750789697}
   - component: {fileID: 1938656889190665665}
-  - component: {fileID: 5135894132363849185}
+  - component: {fileID: 9013525023420629679}
   m_Layer: 0
   m_Name: RoadCube (1)
   m_TagString: RoadCube
@@ -27,7 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3772636005156828221}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 14.63, y: 0.054, z: -11.568}
   m_LocalScale: {x: 4, y: 1, z: 25.365978}
   m_Children: []
@@ -57,6 +57,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -81,6 +82,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &1938656889190665665
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -94,7 +96,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5135894132363849185
+--- !u!114 &9013525023420629679
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -103,9 +105,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 3772636005156828221}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66949c65503b16e43a347153adc7db84, type: 3}
+  m_Script: {fileID: 11500000, guid: 94fbe887a1d135c49a555ef070a03cb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   turretGo: {fileID: 0}
-  buildeffect: {fileID: 2076328249671109516, guid: 8ab75991e7ac3e74faba515f2a146c86,
-    type: 3}
+  turretData:
+    turretPerfab: {fileID: 0}
+    cost: 0
+    TurretUpgradedPrefab: {fileID: 0}
+    costUpgraded: 0
+    type: 0
+  buildeffect: {fileID: 0}
+  isUpGraded: 0

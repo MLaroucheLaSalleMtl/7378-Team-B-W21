@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1821909246787910595
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1821909246787910593}
+  - component: {fileID: 1821909246787910594}
+  - component: {fileID: 1821909246787910592}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1821909246787910593
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1821909246787910595}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -41.509167, y: 8.8785515, z: 22.075325}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1821909246787910594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1821909246787910595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 507abde6d09a71445aebf68a5b89f8d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waves:
+  - enemyPrefb: {fileID: 3363722193386584001, guid: a18d869c7717f5748843b066e2930978, type: 3}
+    count: 4
+    rate: 0.21
+  - enemyPrefb: {fileID: 3363722193386584001, guid: 4bd82dc2b0320aa449bb4bf33247c25d, type: 3}
+    count: 10
+    rate: 0.6
+  StartPoint: {fileID: 0}
+  waveRate: 0.3
+--- !u!114 &1821909246787910592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1821909246787910595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b186f45f02ea6b349a8af77c38ae46ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  laserTurretData:
+    turretPerfab: {fileID: 2301867779320464492, guid: 0ccbcb023fbc72d47ae685d605736a2e, type: 3}
+    cost: 80
+    TurretUpgradedPrefab: {fileID: 7933293967599199008, guid: 5e61b9ab5b6935d489e50c5b94dfdce7, type: 3}
+    costUpgraded: 100
+    type: 0
+  missileTurretData:
+    turretPerfab: {fileID: 5416283002414608907, guid: 9501314d2e80ece4cb31c13aa372d23b, type: 3}
+    cost: 70
+    TurretUpgradedPrefab: {fileID: 8244290697280639908, guid: 6baff27f7201a9e478e4601a0fe23e20, type: 3}
+    costUpgraded: 90
+    type: 1
+  standardTurretData:
+    turretPerfab: {fileID: 1100304984344896756, guid: 24c03e13928282b4e90819079fa0fcf4, type: 3}
+    cost: 50
+    TurretUpgradedPrefab: {fileID: 8382187881199890619, guid: b6950b7b4354f1840ab4f95fb67e9c91, type: 3}
+    costUpgraded: 70
+    type: 2
+  moneyText: {fileID: 0}
+  moneyAnim: {fileID: 0}
+  upgradeCanvas: {fileID: 0}
+  buttonUpgrade: {fileID: 0}

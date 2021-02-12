@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3866462683494160271}
   - component: {fileID: 2121509719911868637}
   - component: {fileID: 7838126087095302493}
-  - component: {fileID: 4152754613739708083}
+  - component: {fileID: 5436758353336435750}
   m_Layer: 6
   m_Name: Cube
   m_TagString: Untagged
@@ -27,7 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4790414364746432673}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.2700982, y: -0.02174675, z: 1.6276984}
   m_LocalScale: {x: 4, y: 1, z: 4}
   m_Children: []
@@ -96,7 +96,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4152754613739708083
+--- !u!114 &5436758353336435750
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -105,7 +105,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4790414364746432673}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70e27e274ade23f4d92ebe1d05aadc33, type: 3}
+  m_Script: {fileID: 11500000, guid: 94fbe887a1d135c49a555ef070a03cb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   turretGo: {fileID: 0}

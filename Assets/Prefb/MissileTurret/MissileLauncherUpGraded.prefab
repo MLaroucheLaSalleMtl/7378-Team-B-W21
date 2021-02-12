@@ -117,6 +117,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -142,6 +143,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &8244290697280639906
 GameObject:
   m_ObjectHideFlags: 0
@@ -197,6 +199,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -222,6 +225,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &8244290697280639908
 GameObject:
   m_ObjectHideFlags: 0
@@ -232,7 +236,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8244290697281130372}
   - component: {fileID: 3370818929461012033}
-  - component: {fileID: 5284924258804905246}
   - component: {fileID: 4959494646629634415}
   m_Layer: 9
   m_Name: MissileLauncherUpGraded
@@ -273,23 +276,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &5284924258804905246
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8244290697280639908}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df439094244c9d4489bc6fe6d45cefcd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackRate: 1
-  bulletPerfab: {fileID: 7795440066291897610, guid: 19fcd3c8fde36274ebd6b44201de364c,
-    type: 3}
-  firePosition: {fileID: 6028261848184471550}
-  head: {fileID: 3371231550921207206}
 --- !u!135 &4959494646629634415
 SphereCollider:
   m_ObjectHideFlags: 0
