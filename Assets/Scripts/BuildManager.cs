@@ -15,8 +15,8 @@ public class BuildManager : MonoBehaviour
     // gameobject in game
     private MapCubes selectedMapcube;
     public Text moneyText;
-    //public Animator moneyAnim;
-    private int money = 1000;
+    public Animator moneyAnim;
+    public int money = 1000;
     public GameObject upgradeCanvas;
     public Button buttonUpgrade;
 
@@ -61,30 +61,30 @@ public class BuildManager : MonoBehaviour
                         else
                         {
                             // not enough money                           
-                            //moneyAnim.SetTrigger("Flicker");
+                            moneyAnim.SetTrigger("Flicker");
                         }
                     }
                     else if (mapCube.turretGo != null)
                     {// to upGrade 
-                        //selectedMapcube = mapCube;
+                        selectedMapcube = mapCube;
 
 
-                        //if (mapCube.isUpGraded)
-                        //{
-                        //    ShowUpgradeUI(mapCube.transform.position, true);
-                        //}
-                        //else
-                        //{
-                        //    ShowUpgradeUI(mapCube.transform.position, false);
-                        //}
-                        //if (mapCube == selectedMapcube && upgradeCanvas.activeInHierarchy)
-                        //{
-                        //    HideUpgradeUI();
-                        //}
-                        //else
-                        //{
-                        //    ShowUpgradeUI(mapCube.transform.position, mapCube.isUpGraded);
-                        //}
+                        if (mapCube.isUpGraded)
+                        {
+                            ShowUpgradeUI(mapCube.transform.position, true);
+                        }
+                        else
+                        {
+                            ShowUpgradeUI(mapCube.transform.position, false);
+                        }
+                        if (mapCube == selectedMapcube && upgradeCanvas.activeInHierarchy)
+                        {
+                            HideUpgradeUI();
+                        }
+                        else
+                        {
+                            ShowUpgradeUI(mapCube.transform.position, mapCube.isUpGraded);
+                        }
 
                     }
                 }
@@ -99,10 +99,7 @@ public class BuildManager : MonoBehaviour
                 selectdTurretData = laserTurretData;
 
             }
-            else
-            {
 
-            }
         }
 
         public void OnMissileSelected(bool isOn)
@@ -111,10 +108,7 @@ public class BuildManager : MonoBehaviour
             {
                 selectdTurretData = missileTurretData;
             }
-            else
-            {
 
-            }
         }
 
         public void OnStandardSelected(bool isOn)
@@ -123,44 +117,41 @@ public class BuildManager : MonoBehaviour
             {
                 selectdTurretData = standardTurretData;
             }
-            else
-            {
 
-            }
         }
 
     // wait to finish in editor
 
-    //void ShowUpgradeUI(Vector3 pos, bool isDisableUpgrade = false)
-    //{
-    //    upgradeCanvas.SetActive(true);
-    //    upgradeCanvas.transform.position = pos;
-    //    buttonUpgrade.interactable = !isDisableUpgrade;
-    //}
+    void ShowUpgradeUI(Vector3 pos, bool isDisableUpgrade = false)
+    {
+        upgradeCanvas.SetActive(true);
+        upgradeCanvas.transform.position = pos;
+        buttonUpgrade.interactable = !isDisableUpgrade;
+    }
 
-    //void HideUpgradeUI()
-    //{
-    //    upgradeCanvas.SetActive(false);
-    //}
+    void HideUpgradeUI()
+    {
+        upgradeCanvas.SetActive(false);
+    }
 
-    //public void OnUpgradeButtomDown()
-    //{
-    //    if (money >= selectedMapcube.turretData.costUpgraded)
-    //    {
-    //        ChangeMoney(-selectedMapcube.turretData.costUpgraded);
-    //        selectedMapcube.UpGradeTurret();
-    //    }
-    //    else
-    //    {
-    //        //moneyAnim.SetTrigger("Flicker");
-    //    }
+    public void OnUpgradeButtomDown()
+    {
+        if (money >= selectedMapcube.turretData.costUpgraded)
+        {
+            ChangeMoney(-selectedMapcube.turretData.costUpgraded);
+            selectedMapcube.UpGradeTurret();
+        }
+        else
+        {
+            //moneyAnim.SetTrigger("Flicker");
+        }
 
-    //    HideUpgradeUI();
-    //}
+        HideUpgradeUI();
+    }
 
-    //public void OnDestoryButtonDown()
-    //{
-    //    selectedMapcube.DestroyTurret();
-    //    HideUpgradeUI();
-    //}
+    public void OnDestoryButtonDown()
+    {
+        selectedMapcube.DestroyTurret();
+        HideUpgradeUI();
+    }
 }

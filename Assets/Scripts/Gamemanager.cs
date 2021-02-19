@@ -10,7 +10,7 @@ public class Gamemanager : MonoBehaviour
     public Transform Summary;
     public Transform WinSummary;
 
-    public Transform Pause;
+    bool ISPause;
     bool isStop = true;
     private bool InGame;
 
@@ -27,7 +27,6 @@ public class Gamemanager : MonoBehaviour
     void CallMainManu()
     {
         InGame = false;
-
         Time.timeScale = 0;
         MainMenu.gameObject.SetActive(true);
         gamestarted = false;
@@ -36,7 +35,10 @@ public class Gamemanager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetKeyDown(KeyCode.Escape) && !ISPause)
+            Pause();
+        else if (Input.GetKeyDown(KeyCode.Escape) && ISPause)
+            UNpause();
     }
 
     void OpenSummary()
@@ -71,6 +73,20 @@ public class Gamemanager : MonoBehaviour
         MainMenu.gameObject.SetActive(false);
         InGame = true;
         
+    }
+
+    public void Pause()
+    {
+        ISPause = true;
+        MainMenu.gameObject.SetActive(true);
+        Time.timeScale = 0f;
+    }
+
+    public void UNpause()
+    {
+        ISPause = false;
+        MainMenu.gameObject.SetActive(false);
+        Time.timeScale = 1f;
     }
 
     public void Click_ExitGame()

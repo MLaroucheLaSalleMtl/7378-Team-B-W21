@@ -30,25 +30,25 @@ public class MapCubes : MonoBehaviour
 
     //wait to finish in editor
 
-    //public void UpGradeTurret()
-    //{
-    //    if (isUpGraded == true) return;
-    //    Destroy(turretGo);//destroy current perfab
-    //    //build upgraded perfab
-    //    isUpGraded = true;
-    //    turretGo = GameObject.Instantiate(turretData.TurretUpgradedPrefab, transform.position, Quaternion.identity);
+    public void UpGradeTurret()
+    {
+        if (isUpGraded == true) return;
+        Destroy(turretGo);//destroy current perfab
+        //build upgraded perfab
+        isUpGraded = true;
+        turretGo = GameObject.Instantiate(turretData.TurretUpgradedPrefab, transform.position, Quaternion.identity);
 
-    //}
+    }
 
-    //public void DestroyTurret()
-    //{
-    //    Destroy(turretGo);//destroy current perfab
-    //    isUpGraded = false;
-    //    turretGo = null;
-    //    turretData = null;
-    //    GameObject effect = GameObject.Instantiate(buildeffect, transform.position, Quaternion.identity);
-    //    Destroy(effect, 1.5f);
-    //}
+    public void DestroyTurret()
+    {
+        Destroy(turretGo);//destroy current perfab
+        isUpGraded = false;
+        turretGo = null;
+        turretData = null;
+        GameObject effect = GameObject.Instantiate(buildeffect, transform.position, Quaternion.identity);
+        Destroy(effect, 1.5f);
+    }
 
     private void OnMouseEnter()
     {

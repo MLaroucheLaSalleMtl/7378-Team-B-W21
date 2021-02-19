@@ -12,6 +12,8 @@ public class Enemy : MonoBehaviour
     public Slider hpSlider;
     private Transform[] positions;
     private int index = 0;
+    private BuildManager buildManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,7 +35,7 @@ public class Enemy : MonoBehaviour
         {
             index++;
         }
-        //判断enemy是否到达了最后的一个点
+        //ckeck enemy reach last point
         if (index > positions.Length - 1)
         {
             ReachDestination();
@@ -53,16 +55,16 @@ public class Enemy : MonoBehaviour
         EnemySpawner.EnemyCount--;
     }
 
-    //public void TakeDamage(float damage)
-    //{
-    //    if (hp <= 0) return;
-    //    hp -= damage;
-    //    hpSlider.value = (float)hp / totalHp;
-    //    if (hp <= 0)
-    //    {
-    //        Die();
-    //    }
-    //}
+    public void TakeDamage(float damage)
+    {
+        if (hp <= 0) return;
+        hp -= damage;
+        hpSlider.value = (float)hp / totalHp;
+        if (hp <= 0)
+        {
+            Die();
+        }
+    }
     public void Die()
     {
         GameObject effect = GameObject.Instantiate(explosionEffect, transform.position, transform.rotation);

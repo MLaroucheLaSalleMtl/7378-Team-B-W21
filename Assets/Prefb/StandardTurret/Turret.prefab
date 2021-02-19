@@ -123,6 +123,7 @@ GameObject:
   - component: {fileID: 1100304984345393364}
   - component: {fileID: 6523694334076095679}
   - component: {fileID: 1686148994201584788}
+  - component: {fileID: 3492954258667325878}
   m_Layer: 9
   m_Name: Turret
   m_TagString: Untagged
@@ -175,6 +176,26 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 13.13
   m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!114 &3492954258667325878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1100304984344896756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1edeace95f776f047a9843a4745fb502, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackRate: 1
+  bulletPerfab: {fileID: 3358453675455646607, guid: a2d75e3765798c9438d2c48fb9091445, type: 3}
+  firePosition: {fileID: 52837892}
+  head: {fileID: 811003344084490802}
+  useLaser: 0
+  damageRate: 50
+  laserRanderer: {fileID: 0}
+  laserEffect: {fileID: 0}
 --- !u!1 &1100304984344896758
 GameObject:
   m_ObjectHideFlags: 0

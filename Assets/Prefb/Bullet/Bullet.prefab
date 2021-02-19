@@ -58,6 +58,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -82,6 +83,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!135 &3358453675455646592
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -104,13 +106,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3358453675455646607}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a20ab8412f10f9140a28b2b48e6f6531, type: 3}
+  m_Script: {fileID: 11500000, guid: 9eb5bf312e85a854283dc7d955670ede, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 50
-  speed: 65
-  explosionEffectPrefab: {fileID: 4178525974347802502, guid: 0fe00fcfa388ec847aa5b8c6c02c9a87,
-    type: 3}
+  speed: 20
+  explosionEffectPrefab: {fileID: 4178525974347802502, guid: 0fe00fcfa388ec847aa5b8c6c02c9a87, type: 3}
 --- !u!54 &2605647682864212838
 Rigidbody:
   m_ObjectHideFlags: 0

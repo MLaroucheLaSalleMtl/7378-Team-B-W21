@@ -311,7 +311,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   hp: 150
-  explosionEffect: {fileID: 0}
+  explosionEffect: {fileID: 4178525974347802502, guid: e4db17976c82c934a98d62d02e5b86fb, type: 3}
   hpSlider: {fileID: 7048968829697877681}
 --- !u!1 &4447185640651816694
 GameObject:
