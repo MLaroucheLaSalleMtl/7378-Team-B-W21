@@ -11,11 +11,14 @@ public class Turrents_Test : MonoBehaviour
     public GameObject Enemy_GameOb;
     private  GoToEndPosition Enemy;
     [SerializeField] public Transform FireBall;
-    private Transform FireBall1;
+    private Transform fireBall;
 
     [SerializeField] private Transform FireBall_StartPos;
    
     private Vector3 Enemy_Direction;
+
+    private bool Is_TakenDamage;  //to detect if fireball collide on this gameobject.
+    
 
     public float Hp { get => hp; set => hp = value; }
     public float Damage { get => damage; set => damage = value; }
@@ -23,7 +26,7 @@ public class Turrents_Test : MonoBehaviour
 
     void Start()
     {
-        
+        Is_TakenDamage = false;
     }
 
     // Update is called once per frame
@@ -38,16 +41,27 @@ public class Turrents_Test : MonoBehaviour
             Debug.Log("Good");
             Enemy = other.gameObject.GetComponent<GoToEndPosition>();      
             
-            FireBall1 = Instantiate(FireBall, FireBall_StartPos.position, Quaternion.identity);
-            FireBall1.transform.LookAt(Enemy_GameOb.transform.position);
+            fireBall = Instantiate(FireBall, FireBall_StartPos.position, Quaternion.identity);
+          
 
         }
     }
+    private void OnTriggerStay(Collider other)
+    {
+        if(other.tag=="enemy")
+        {
+            fireBall.transform.LookAt(Enemy_GameOb.transform.position);
+        }
+        
+    }
+   
+
     private void OnTriggerExit(Collider other)
     {
         if(other.tag=="enemy")
         {
             Enemy = null;
+            
         }
     }
     public void Attack(GoToEndPosition enemy)
@@ -56,6 +70,11 @@ public class Turrents_Test : MonoBehaviour
     }
     public void Taken_Damage(GoToEndPosition enemy)
     {
-        enemy.Attack(this);
+        if(Is_TakenDamage)
+        {
+            enemy.Attack(this);
+            Is_TakenDamage = false;
+        }
+        
     }
 }

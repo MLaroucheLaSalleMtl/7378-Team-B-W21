@@ -317,13 +317,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 3363722193386584001}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28c8a30239fc0db48b449f1bbcf9db9f, type: 3}
+  m_Script: {fileID: 11500000, guid: f4b7b273c819436459e19a988991010e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
   hp: 150
   explosionEffect: {fileID: 4178525974347802502, guid: e4db17976c82c934a98d62d02e5b86fb, type: 3}
   hpSlider: {fileID: 4510502550796121723}
+  Cards: []
 --- !u!1 &7974502092943872317
 GameObject:
   m_ObjectHideFlags: 0

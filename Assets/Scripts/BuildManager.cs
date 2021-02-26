@@ -16,7 +16,7 @@ public class BuildManager : MonoBehaviour
     private MapCubes selectedMapcube;
     public Text moneyText;
     public Animator moneyAnim;
-    public int money = 1000;
+    public static int money = 0;
     public GameObject upgradeCanvas;
     public Button buttonUpgrade;
 
@@ -29,12 +29,14 @@ public class BuildManager : MonoBehaviour
 
     private void Start()
     {
+        money = 1000;
         moneyText.text = "$" + money;
     }
 
     // Update is called once per frame
     void Update()
     {
+        moneyText.text = "$" + money;
         //Check mouse
         if (Input.GetMouseButtonDown(0))
         {
@@ -69,14 +71,14 @@ public class BuildManager : MonoBehaviour
                         selectedMapcube = mapCube;
 
 
-                        if (mapCube.isUpGraded)
-                        {
-                            ShowUpgradeUI(mapCube.transform.position, true);
-                        }
-                        else
-                        {
-                            ShowUpgradeUI(mapCube.transform.position, false);
-                        }
+                        //if (mapCube.isUpGraded)
+                        //{
+                        //    ShowUpgradeUI(mapCube.transform.position, true);
+                        //}
+                        //else
+                        //{
+                        //    ShowUpgradeUI(mapCube.transform.position, false);
+                        //}
                         if (mapCube == selectedMapcube && upgradeCanvas.activeInHierarchy)
                         {
                             HideUpgradeUI();
@@ -143,7 +145,7 @@ public class BuildManager : MonoBehaviour
         }
         else
         {
-            //moneyAnim.SetTrigger("Flicker");
+            moneyAnim.SetTrigger("Flicker");
         }
 
         HideUpgradeUI();
