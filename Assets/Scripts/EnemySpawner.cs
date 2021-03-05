@@ -14,17 +14,18 @@ public class EnemySpawner : MonoBehaviour
     public Text Text_AllWaves;
     public Text Text_CurrentWave;
     public int waveNumber;
+    private Coroutine coroutine;
 
     void Start()
     {
-        StartCoroutine(SpawnEnemy());
+        coroutine = StartCoroutine(SpawnEnemy());
         Text_AllWaves.text = waves.Length.ToString();
         waveNumber = 1;
     }
 
     public void Stop()
     {
-        StopCoroutine("SpawnEnemy");
+        StopCoroutine(coroutine);
     }
 
     public void Update()
@@ -32,7 +33,7 @@ public class EnemySpawner : MonoBehaviour
         Text_CurrentWave.text = waveNumber.ToString();
         if(waveNumber > waves.Length)
         {
-            Stop();
+            //Stop();
             waveNumber = waves.Length;
         }
     }
@@ -66,6 +67,6 @@ public class EnemySpawner : MonoBehaviour
         {
             yield return 0;
         }
-        //GameManager.Instance.Win();
+        LevelManager.Instance.Win();
     }
 }

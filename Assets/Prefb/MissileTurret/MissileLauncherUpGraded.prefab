@@ -303,10 +303,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRate: 1
-  bulletPerfab: {fileID: 9010898257465957532, guid: 3e70d3a19356aa84ea0a7ec83f47064a, type: 3}
+  bulletPerfab: {fileID: 9010898257465957532, guid: 28b7a328e3fc5404db9c3ef4d2ba21f4, type: 3}
   firePosition: {fileID: 6028261848184471550}
   head: {fileID: 3371231550921207206}
   useLaser: 0
-  damageRate: 70
+  damageRate: 85
   laserRanderer: {fileID: 0}
   laserEffect: {fileID: 0}

@@ -225,7 +225,7 @@ GameObject:
   - component: {fileID: 3363722193386583999}
   - component: {fileID: -1280713587072417538}
   m_Layer: 10
-  m_Name: Enemy
+  m_Name: Enemy 3
   m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -273,7 +273,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9a2b982c493175344ac31a1aba1bf8a1, type: 2}
+  - {fileID: 2100000, guid: 780c33b7ba8486f4c9e3de39b3c0f193, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -320,9 +320,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4b7b273c819436459e19a988991010e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 20
   hp: 150
   explosionEffect: {fileID: 4178525974347802502, guid: e4db17976c82c934a98d62d02e5b86fb, type: 3}
   hpSlider: {fileID: 4510502550796121723}
+  rate: 0
   Cards: []
 --- !u!1 &7974502092943872317
 GameObject:

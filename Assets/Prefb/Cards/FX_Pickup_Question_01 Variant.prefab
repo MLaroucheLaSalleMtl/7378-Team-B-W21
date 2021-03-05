@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FX_Pickup_Question_01 Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 1035084944221040, guid: c227dd14e3b49524e887fb34535503e4, type: 3}
+      propertyPath: m_TagString
+      value: Cube
+      objectReference: {fileID: 0}
     - target: {fileID: 4755956072156452, guid: c227dd14e3b49524e887fb34535503e4, type: 3}
       propertyPath: m_RootOrder
       value: 0

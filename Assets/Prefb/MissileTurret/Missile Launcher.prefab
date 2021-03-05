@@ -142,7 +142,7 @@ MonoBehaviour:
   firePosition: {fileID: 3236398784097706760}
   head: {fileID: 2096530688371677685}
   useLaser: 0
-  damageRate: 65
+  damageRate: 75
   laserRanderer: {fileID: 0}
   laserEffect: {fileID: 0}
 --- !u!1 &5416283002414608909

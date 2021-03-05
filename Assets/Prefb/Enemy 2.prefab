@@ -262,7 +262,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9a2b982c493175344ac31a1aba1bf8a1, type: 2}
+  - {fileID: 2100000, guid: 19a1e36f2c151cf459622bc69601af3d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -309,9 +309,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4b7b273c819436459e19a988991010e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 150
+  speed: 10
+  hp: 400
   explosionEffect: {fileID: 4178525974347802502, guid: e4db17976c82c934a98d62d02e5b86fb, type: 3}
   hpSlider: {fileID: 7048968829697877681}
+  rate: 0
   Cards: []
 --- !u!1 &4447185640651816694
 GameObject:

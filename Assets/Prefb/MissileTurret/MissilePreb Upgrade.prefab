@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6334817924647334108}
   - component: {fileID: 360420696885375464}
   m_Layer: 0
-  m_Name: MissilePreb
+  m_Name: MissilePreb Upgrade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,8 +75,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9eb5bf312e85a854283dc7d955670ede, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 70
-  speed: 45
+  damage: 100
+  speed: 60
   explosionEffectPrefab: {fileID: 4178525974347802502, guid: 0444075ffff8cb64f84b716715adb8f9, type: 3}
 --- !u!1001 &1112482137532051450
 PrefabInstance:

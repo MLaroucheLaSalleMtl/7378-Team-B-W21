@@ -13,6 +13,9 @@ public class Enemy : MonoBehaviour
     private Transform[] positions;
     private int index = 0;
 
+    public int rate;
+    bool onetimes_forCards;
+
     //By PeiXin
     private bool IsAlive;
     Vector3 Enemy_Velocity;
@@ -36,6 +39,8 @@ public class Enemy : MonoBehaviour
         Enemy_Anim = GetComponent<Animator>();
         IsAlive = true;
 
+        onetimes_forCards = false;
+
     }
 
     // Update is called once per frame
@@ -47,6 +52,17 @@ public class Enemy : MonoBehaviour
             
             
         }
+
+        //if(IsAlive == false)
+        //{
+            
+        //    if (!onetimes_forCards)
+        //    {
+
+        //        create_Card();
+        //        onetimes_forCards = true;
+        //    }
+        //}
     }
     
     private void Set_Alive()   //when the enemy HP decrease to 0 ,the enemy die by PeiXin
@@ -62,6 +78,9 @@ public class Enemy : MonoBehaviour
     {
         Enemy_Anim.SetBool("IsDead", true);
         Invoke("Destroy_Gameobject", 3f);
+
+
+
     }
     private void Destroy_Gameobject()
     {
@@ -90,9 +109,9 @@ public class Enemy : MonoBehaviour
     /// <summary>
     //reach to the final target and game over
     /// <summary>
-    void ReachDestination()
+    public void ReachDestination()
     {
-       
+        LevelManager.Instance.Fail();     
         GameObject.Destroy(this.gameObject);
     }
 
@@ -110,6 +129,7 @@ public class Enemy : MonoBehaviour
         {
             Die();
             BuildManager.money += 10;
+            create_Card();
         }
     }
     public void Die()
@@ -123,18 +143,36 @@ public class Enemy : MonoBehaviour
 
 
     //Card systems  ||↓ ↓ ↓ ↓ ↓ ↓ ↓ 
-    private int Get_Random()
+
+    private bool Drop_rate()
     {
-        int Index;
-        Index = Random.Range(0, 3);
-        return Index;
+
+        rate = Random.Range(0, 101);
+        return rate <= 5;
+
+        //int RandomNumber = Random.Range(0, 20);
+        //if (RandomNumber == 1)
+        //{
+
+        //}
     }
+
+
+    //private int Get_Random()
+    //{
+    //    int Index;
+    //    Index = Random.Range(0, 10);
+    //    return Index;
+
+
+    //}
+
     private void create_Card()
     {
-        int index;
-        index = Get_Random();
-        Instantiate(Cards[index], transform.position, Quaternion.identity);
-
+        //int index;
+        //index = Get_Random();
+        //Instantiate(Cards[index], transform.position, Quaternion.identity);
+        
         //if(index==0)
         //{
         //    Hp *= 2;

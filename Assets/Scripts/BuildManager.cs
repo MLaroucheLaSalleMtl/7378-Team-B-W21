@@ -20,6 +20,8 @@ public class BuildManager : MonoBehaviour
     public GameObject upgradeCanvas;
     public Button buttonUpgrade;
 
+    private bool canBuild;
+
 
     void ChangeMoney(int change = 0)
     {
@@ -29,7 +31,7 @@ public class BuildManager : MonoBehaviour
 
     private void Start()
     {
-        money = 1000;
+        money = 500;
         moneyText.text = "$" + money;
     }
 
@@ -43,84 +45,105 @@ public class BuildManager : MonoBehaviour
             //when mouse cilck on UI
             if (EventSystem.current.IsPointerOverGameObject() == false)
             {
-                //Buil Turret
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                RaycastHit hit;
-                bool isCollider = Physics.Raycast(ray, out hit, 1000, LayerMask.GetMask("MapCube"));
-
-                if (isCollider)
+                if(canBuild == true)
                 {
-                    MapCubes mapCube = hit.collider.GetComponent<MapCubes>();
+                    //Buil Turret
+                    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                    RaycastHit hit;
+                    bool isCollider = Physics.Raycast(ray, out hit, 1000, LayerMask.GetMask("MapCube"));
 
-                    if (selectdTurretData != null && mapCube.turretGo == null)// be able to build
+                    if (isCollider)
                     {
-                        if (money > selectdTurretData.cost)
-                        {
+                        MapCubes mapCube = hit.collider.GetComponent<MapCubes>();
 
-                            mapCube.BuildTurret(selectdTurretData);
-                            ChangeMoney(-selectdTurretData.cost);
-                        }
-                        else
+                        if (selectdTurretData != null && mapCube.turretGo == null)// be able to build
                         {
-                            // not enough money                           
-                            moneyAnim.SetTrigger("Flicker");
-                        }
-                    }
-                    else if (mapCube.turretGo != null)
-                    {// to upGrade 
-                        selectedMapcube = mapCube;
+                            if (money > selectdTurretData.cost)
+                            {
 
-
-                        //if (mapCube.isUpGraded)
-                        //{
-                        //    ShowUpgradeUI(mapCube.transform.position, true);
-                        //}
-                        //else
-                        //{
-                        //    ShowUpgradeUI(mapCube.transform.position, false);
-                        //}
-                        if (mapCube == selectedMapcube && upgradeCanvas.activeInHierarchy)
-                        {
-                            HideUpgradeUI();
+                                mapCube.BuildTurret(selectdTurretData);
+                                ChangeMoney(-selectdTurretData.cost);
+                            }
+                            else
+                            {
+                                // not enough money                           
+                                moneyAnim.SetTrigger("Flicker");
+                            }
                         }
-                        else
-                        {
-                            ShowUpgradeUI(mapCube.transform.position, mapCube.isUpGraded);
-                        }
+                        else if (mapCube.turretGo != null)
+                        {// to upGrade 
+                            selectedMapcube = mapCube;
 
+                            if (mapCube == selectedMapcube && upgradeCanvas.activeInHierarchy)
+                            {
+                                HideUpgradeUI();
+                            }
+                            else
+                            {
+                                ShowUpgradeUI(mapCube.transform.position, mapCube.isUpGraded);
+                            }
+
+                        }
                     }
                 }
-
+                else
+                {
+                    RaycastHit hit;
+                    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                    bool isCard = Physics.Raycast(ray, out hit, 1000, LayerMask.GetMask("Card"));
+                    if(isCard)
+                    {
+                        GameObject.Destroy(hit.transform.gameObject);
+                    }
+                }
+                
             }
         }
     }
-        public void OnLaserSelected(bool isOn)
+    public void OnLaserSelected(bool isOn)
+    {
+        if(isOn)
         {
-            if(isOn)
-            {
-                selectdTurretData = laserTurretData;
-
-            }
+            canBuild = true;
+            selectdTurretData = laserTurretData;
 
         }
-
-        public void OnMissileSelected(bool isOn)
+        else
         {
-            if (isOn)
-            {
-                selectdTurretData = missileTurretData;
-            }
-
+            canBuild = false;
+            selectdTurretData = null;
         }
 
-        public void OnStandardSelected(bool isOn)
-        {
-            if (isOn)
-            {
-                selectdTurretData = standardTurretData;
-            }
+    }
 
+    public void OnMissileSelected(bool isOn)
+    {
+        if (isOn)
+        {
+            canBuild = true;
+            selectdTurretData = missileTurretData;
         }
+        else
+        {
+            canBuild = false;
+            selectdTurretData = null;
+        }
+
+    }
+
+    public void OnStandardSelected(bool isOn)
+    {
+        if (isOn)
+        {
+            canBuild = true;
+            selectdTurretData = standardTurretData;
+        }
+        else
+        {
+            canBuild = false;
+            selectdTurretData = null;
+        }
+    }
 
     // wait to finish in editor
 
@@ -155,5 +178,6 @@ public class BuildManager : MonoBehaviour
     {
         selectedMapcube.DestroyTurret();
         HideUpgradeUI();
+        money += 30;
     }
 }
