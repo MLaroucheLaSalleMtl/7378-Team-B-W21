@@ -9,6 +9,9 @@ public class BuildManager : MonoBehaviour
     public TurretData laserTurretData;
     public TurretData missileTurretData;
     public TurretData standardTurretData;
+    public TurretData fireBallTurretData;
+    public TurretData SnowBallTurretData;
+    
 
     //turret to be build
     private TurretData selectdTurretData;
@@ -19,10 +22,14 @@ public class BuildManager : MonoBehaviour
     public static int money = 0;
     public GameObject upgradeCanvas;
     public Button buttonUpgrade;
+    private Set_Value PowerUp;
 
     private bool canBuild;
 
-
+    //cards
+    public click click;
+    public bool IsCard;
+    
     void ChangeMoney(int change = 0)
     {
         money += change;
@@ -33,6 +40,7 @@ public class BuildManager : MonoBehaviour
     {
         money = 500;
         moneyText.text = "$" + money;
+        //click = new click();
     }
 
     // Update is called once per frame
@@ -88,21 +96,20 @@ public class BuildManager : MonoBehaviour
                 }
                 else
                 {
-                    RaycastHit hit;
-                    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                    bool isCard = Physics.Raycast(ray, out hit, 1000, LayerMask.GetMask("Card"));
-                    if(isCard)
-                    {
-                        GameObject.Destroy(hit.transform.gameObject);
-                    }
+                    //RaycastHit hit;
+                    //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                    //IsCard = Physics.Raycast(ray, out hit, 1000, LayerMask.GetMask("Card"));
                 }
-                
+
             }
         }
     }
+
+
+    //Select turret to build
     public void OnLaserSelected(bool isOn)
     {
-        if(isOn)
+        if (isOn)
         {
             canBuild = true;
             selectdTurretData = laserTurretData;
@@ -143,6 +150,35 @@ public class BuildManager : MonoBehaviour
             canBuild = false;
             selectdTurretData = null;
         }
+    }
+
+    public void OnFireBallSelected(bool isOn)
+    {
+        if (isOn)
+        {
+            canBuild = true;
+            selectdTurretData = fireBallTurretData;
+        }
+        else
+        {
+            canBuild = false;
+            selectdTurretData = null;
+        }
+
+    }
+    public void OnSnoWBallSelected(bool isOn)
+    {
+        if (isOn)
+        {
+            canBuild = true;
+            selectdTurretData = SnowBallTurretData;
+        }
+        else
+        {
+            canBuild = false;
+            selectdTurretData = null;
+        }
+
     }
 
     // wait to finish in editor

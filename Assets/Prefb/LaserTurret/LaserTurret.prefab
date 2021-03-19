@@ -192,6 +192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1edeace95f776f047a9843a4745fb502, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hp: 10
   attackRate: 1
   bulletPerfab: {fileID: 0}
   firePosition: {fileID: 219095551}

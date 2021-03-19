@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6330812739326327780}
   - component: {fileID: 9169309133085734106}
   - component: {fileID: 6522356734600273739}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85,7 +85,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3083239981299810438}
   - component: {fileID: 2552960145057524694}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -173,7 +173,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1531793885382862453}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -212,7 +212,7 @@ GameObject:
   - component: {fileID: 5648350637393937945}
   - component: {fileID: 734944661604593066}
   - component: {fileID: 5043596075214680576}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Canvas (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -313,7 +313,7 @@ GameObject:
   - component: {fileID: 3363722193386583996}
   - component: {fileID: 3363722193386583999}
   - component: {fileID: -6447295460958834579}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Enemy 1
   m_TagString: enemy
   m_Icon: {fileID: 0}
@@ -414,7 +414,10 @@ MonoBehaviour:
   explosionEffect: {fileID: 4178525974347802502, guid: e4db17976c82c934a98d62d02e5b86fb, type: 3}
   hpSlider: {fileID: 2552960145057524694}
   rate: 0
-  Cards: []
+  Cards:
+  - {fileID: 7681922451105834604, guid: f6f19512082d3614a82404484dcb0c04, type: 3}
+  - {fileID: 1949220307598668717, guid: 93adaadabb0151e41849fc5b16e3cf31, type: 3}
+  - {fileID: 1057855086421144571, guid: 0323e4e8ada74194a90178fc3e5c2b3b, type: 3}
 --- !u!1 &3439833610347116400
 GameObject:
   m_ObjectHideFlags: 0
@@ -426,7 +429,7 @@ GameObject:
   - component: {fileID: 4894375992422465080}
   - component: {fileID: 6021053555799519928}
   - component: {fileID: 9100961484078106127}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -8,7 +8,6 @@ public class destroyitems : MonoBehaviour
     void Start()
     {
         Destroy(gameObject, 10.0f);
-        
     }
 
     // Update is called once per frame

@@ -8,6 +8,10 @@ TagManager:
   - RoadCube
   - Home
   - Cube
+  - WayPoints
+  - Cards
+  - Turrent
+  - goal
   layers:
   - Default
   - TransparentFX

@@ -13,6 +13,48 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-4572998490524345106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7681922451105834604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4d6adf25968c7142b1d4444de489786, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardIndex: 1
+--- !u!114 &-1124964663256483828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7681922451105834604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa907445d6c866447b1b9a1162756c9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Cube_Red: {fileID: 7681922451105834604}
+  Cube_Yellow: {fileID: 1949220307598668717, guid: 93adaadabb0151e41849fc5b16e3cf31, type: 3}
+  Cube_Black: {fileID: 1057855086421144571, guid: 0323e4e8ada74194a90178fc3e5c2b3b, type: 3}
+  Cube_Pink: {fileID: 9169570184696265046, guid: 4c86a65f2dfa8ff4d92620e66b35c094, type: 3}
+  enemy: []
+--- !u!114 &-36351914304903781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7681922451105834604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ca70709e70260d4282dea07080843be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7683010899937144178
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20,13 +62,29 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1124198748804818, guid: c25375709a7d2e24ba8b622405bfc216, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 1163771896122142, guid: c25375709a7d2e24ba8b622405bfc216, type: 3}
       propertyPath: m_Name
       value: FX_Pickup_Ammo_01 Variant
       objectReference: {fileID: 0}
     - target: {fileID: 1163771896122142, guid: c25375709a7d2e24ba8b622405bfc216, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1163771896122142, guid: c25375709a7d2e24ba8b622405bfc216, type: 3}
       propertyPath: m_TagString
-      value: Cube
+      value: Cards
+      objectReference: {fileID: 0}
+    - target: {fileID: 1289803115217724, guid: c25375709a7d2e24ba8b622405bfc216, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1297103672879800, guid: c25375709a7d2e24ba8b622405bfc216, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4903591308292106, guid: c25375709a7d2e24ba8b622405bfc216, type: 3}
       propertyPath: m_RootOrder

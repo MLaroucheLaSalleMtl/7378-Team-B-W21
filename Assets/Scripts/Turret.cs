@@ -4,13 +4,24 @@ using UnityEngine;
 
 public class Turret : MonoBehaviour
 {
-    private List<GameObject> enemys = new List<GameObject>();
+    public AudioClip normal;
+    public AudioClip snow;
+    public AudioClip fire;
+    AudioSource audiosource;
 
+    private bullet bullet;
+
+
+    private List<GameObject> enemys = new List<GameObject>();
+    public float hp;
+    private float max_hp;
+    private bool IsAlive;
 
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == "enemy")
         {
+            
             enemys.Add(other.gameObject);
         }
     }
@@ -35,16 +46,31 @@ public class Turret : MonoBehaviour
     public LineRenderer laserRanderer;
     public GameObject laserEffect;
 
+    public float Hp { get => hp; set => hp = value; }
 
     void Start()
     {
+        
+
         timer = attackRate;
+        IsAlive = true;
+        audiosource = GetComponent<AudioSource>();
     }
 
+  
 
     void Update()
     {
-        //heads direction
+        if(Hp<=0)
+        {
+            IsAlive = false;
+        }     
+        if(!IsAlive)
+        {
+
+            DestroySelf();
+        }
+         //heads direction
         if (enemys.Count > 0 && enemys[0] != null)
         {
             Vector3 targetPosition = enemys[0].transform.position;
@@ -101,9 +127,14 @@ public class Turret : MonoBehaviour
 
 
     }
+    private void DestroySelf()
+    {
+        Destroy(transform.gameObject);
+    }
 
     public void Attack()
     {
+       
         if (enemys[0] == null)
         {
             UpdateEnemy();
@@ -111,8 +142,10 @@ public class Turret : MonoBehaviour
         }
         if (enemys.Count > 0)
         {
+            
             GameObject bullet = GameObject.Instantiate(bulletPerfab, firePosition.position, firePosition.rotation);
             bullet.GetComponent<bullet>().SetTarget(enemys[0].transform);
+            bullet.GetComponent<bullet>().LookAtEnemy();
         }
         else
         {
@@ -136,5 +169,12 @@ public class Turret : MonoBehaviour
         {
             enemys.RemoveAt(emptyIndex[j] - j);
         }
+    }
+    public void Taken_Damage(float damage)
+    {
+        if (Hp <= 0) return;
+        Hp -= damage;
+        
+        
     }
 }

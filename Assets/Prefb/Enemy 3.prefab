@@ -325,7 +325,10 @@ MonoBehaviour:
   explosionEffect: {fileID: 4178525974347802502, guid: e4db17976c82c934a98d62d02e5b86fb, type: 3}
   hpSlider: {fileID: 4510502550796121723}
   rate: 0
-  Cards: []
+  Cards:
+  - {fileID: 7681922451105834604, guid: f6f19512082d3614a82404484dcb0c04, type: 3}
+  - {fileID: 1949220307598668717, guid: 93adaadabb0151e41849fc5b16e3cf31, type: 3}
+  - {fileID: 1057855086421144571, guid: 0323e4e8ada74194a90178fc3e5c2b3b, type: 3}
 --- !u!1 &7974502092943872317
 GameObject:
   m_ObjectHideFlags: 0

@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 3492954258667325878}
   m_Layer: 9
   m_Name: Turret
-  m_TagString: Untagged
+  m_TagString: Turrent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -188,6 +188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1edeace95f776f047a9843a4745fb502, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hp: 100
   attackRate: 1
   bulletPerfab: {fileID: 3358453675455646607, guid: a2d75e3765798c9438d2c48fb9091445, type: 3}
   firePosition: {fileID: 52837892}

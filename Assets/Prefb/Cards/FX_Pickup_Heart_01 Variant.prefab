@@ -1,5 +1,60 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-5820912796006442556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9169570184696265046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa907445d6c866447b1b9a1162756c9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Cube_Red: {fileID: 7681922451105834604, guid: f6f19512082d3614a82404484dcb0c04, type: 3}
+  Cube_Yellow: {fileID: 1949220307598668717, guid: 93adaadabb0151e41849fc5b16e3cf31, type: 3}
+  Cube_Black: {fileID: 1057855086421144571, guid: 0323e4e8ada74194a90178fc3e5c2b3b, type: 3}
+  Cube_Pink: {fileID: 9169570184696265046}
+  enemy: []
+--- !u!114 &-3658498695683206009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9169570184696265046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ca70709e70260d4282dea07080843be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6661409218967557562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9169570184696265046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4d6adf25968c7142b1d4444de489786, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardIndex: 4
+--- !u!65 &1586880230
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9169570184696265046}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &9170869495893135788
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7,13 +62,29 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1126370790706698, guid: 5a98cb783d692744e8e305c5b0b5f551, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1533788674305820, guid: 5a98cb783d692744e8e305c5b0b5f551, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 1586284866332922, guid: 5a98cb783d692744e8e305c5b0b5f551, type: 3}
       propertyPath: m_Name
       value: FX_Pickup_Heart_01 Variant
       objectReference: {fileID: 0}
     - target: {fileID: 1586284866332922, guid: 5a98cb783d692744e8e305c5b0b5f551, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1586284866332922, guid: 5a98cb783d692744e8e305c5b0b5f551, type: 3}
       propertyPath: m_TagString
-      value: Cube
+      value: Cards
+      objectReference: {fileID: 0}
+    - target: {fileID: 1750366569161240, guid: 5a98cb783d692744e8e305c5b0b5f551, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4565847629637810, guid: 5a98cb783d692744e8e305c5b0b5f551, type: 3}
       propertyPath: m_RootOrder
@@ -33,15 +104,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4565847629637810, guid: 5a98cb783d692744e8e305c5b0b5f551, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 64.67665
+      value: 3.8610249
       objectReference: {fileID: 0}
     - target: {fileID: 4565847629637810, guid: 5a98cb783d692744e8e305c5b0b5f551, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 41.976
+      value: 6.0209446
       objectReference: {fileID: 0}
     - target: {fileID: 4565847629637810, guid: 5a98cb783d692744e8e305c5b0b5f551, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 74.327705
+      value: -2.7400007
       objectReference: {fileID: 0}
     - target: {fileID: 4565847629637810, guid: 5a98cb783d692744e8e305c5b0b5f551, type: 3}
       propertyPath: m_LocalRotation.w
@@ -89,3 +160,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a98cb783d692744e8e305c5b0b5f551, type: 3}
+--- !u!1 &9169570184696265046 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1586284866332922, guid: 5a98cb783d692744e8e305c5b0b5f551, type: 3}
+  m_PrefabInstance: {fileID: 9170869495893135788}
+  m_PrefabAsset: {fileID: 0}
