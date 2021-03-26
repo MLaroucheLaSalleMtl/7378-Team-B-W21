@@ -4792,8 +4792,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - enemyPrefb: {fileID: 836675631971808705, guid: e9630bfc5b6f33f49ad3ce52ee3e8e78, type: 3}
-    count: 4
+    count: 2
     rate: 3
+  - enemyPrefb: {fileID: 1923842443043251711, guid: c82f83ef3ae31aa4e8014758a7418709, type: 3}
+    count: 10
+    rate: 0.6
   - enemyPrefb: {fileID: 1923842443043251711, guid: c82f83ef3ae31aa4e8014758a7418709, type: 3}
     count: 10
     rate: 0.6

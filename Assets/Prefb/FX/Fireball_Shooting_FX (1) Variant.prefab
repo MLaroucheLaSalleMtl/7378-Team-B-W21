@@ -45,7 +45,8 @@ MonoBehaviour:
   damage: 50
   continuesDamage: 10
   speed: 20
-  explosionEffectPrefab: {fileID: 4091232252398538715, guid: 81b58e6d28ee1414b9171ca0489ec86c, type: 3}
+  explosionEffectPrefab: {fileID: 100000, guid: fabff3cbe4a4be24a90f7b23e155e025, type: 3}
+  FireImpact_FX: {fileID: 4091232252398538715, guid: 81b58e6d28ee1414b9171ca0489ec86c, type: 3}
 --- !u!114 &2756467583574768084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,7 +148,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1415679859382806824, guid: d5467d0aae9b88944bda20a421c40e17, type: 3}
       propertyPath: m_Name
-      value: Fireball_Shooting_FX (1) Variant (1)
+      value: Fireball_Shooting_FX (1) Variant
       objectReference: {fileID: 0}
     - target: {fileID: 1415679859382806824, guid: d5467d0aae9b88944bda20a421c40e17, type: 3}
       propertyPath: m_IsActive
@@ -199,7 +200,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1420529771879714284, guid: d5467d0aae9b88944bda20a421c40e17, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 25.811882
+      value: 23.4
       objectReference: {fileID: 0}
     - target: {fileID: 1420529771879714284, guid: d5467d0aae9b88944bda20a421c40e17, type: 3}
       propertyPath: m_LocalPosition.y

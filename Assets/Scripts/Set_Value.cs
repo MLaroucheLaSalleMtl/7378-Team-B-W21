@@ -37,29 +37,7 @@ public class Set_Value : MonoBehaviour
         {
             MY_turrent.Hp *= 2f;
         }
-
-        // if (Cube_Type == "Yellow")
-        // {
-        //     //五秒的时长
-        //    //turrents attect speed *= 2;
-        // }
-
-        //if (Cube_Type =="green")
-        // {
-        //     //五秒的时长
-        //     //Enemy.speed = 0;
-        // }
-        // if (Cube_Type=="pink")
-        // {
-        //     //enemy hp *= 0.7;
-
-                 //Enemy.hp *= 0.7;
-        // }
-        // if (Cube_Type=="black")
-        // {
-
-        //     BuildManager.money += 200;
-        // }
+        
     }
 
     public void RedPowerUp()

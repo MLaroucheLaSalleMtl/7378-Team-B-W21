@@ -24,11 +24,11 @@ public class bullet : MonoBehaviour
     private Transform target;
     private Enemy enemy;
     public GameObject explosionEffectPrefab;
-
-
+    private GameObject Burn_Effect;
     private Enemy Current_Enemy;
+    [SerializeField] private GameObject FireImpact_FX;
 
-
+    public GameObject Burn_Effect1 { get => Burn_Effect; set => Burn_Effect = value; }
 
     public void SetTarget(Transform _target)
     {
@@ -74,6 +74,12 @@ public class bullet : MonoBehaviour
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
 
     }
+    private void Impact_FX(GameObject FX)
+    {
+        GameObject Impact = Instantiate(FX, transform.position, Quaternion.identity);
+        Destroy(Impact, 2f);
+        
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -99,8 +105,17 @@ public class bullet : MonoBehaviour
                 Destroy(effect, 1);
                 Destroy(this.gameObject);
             }
+            if (type == Type.fireball)
+            {
 
-            
+                Impact_FX(FireImpact_FX);
+                Burn_Effect1 = GameObject.Instantiate(explosionEffectPrefab, transform.position, transform.rotation);
+                Burn_Effect1.transform.parent = this.transform;
+                Destroy(Burn_Effect1, 5f);
+            }
+
+
+
 
         }
         
@@ -114,8 +129,8 @@ public class bullet : MonoBehaviour
                 
                  //audiosource.PlayOneShot(clip3);
                  Current_Enemy.TakeContinuesDamage(10, continuesDamage);
-                 GameObject effect = GameObject.Instantiate(explosionEffectPrefab, transform.position, transform.rotation);
-                 Destroy(effect, 5f);
+                
+                
                  Destroy(this.gameObject,5f);
                             
             }

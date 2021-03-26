@@ -15,6 +15,8 @@ public class BuildManager : MonoBehaviour
 
     //turret to be build
     private TurretData selectdTurretData;
+
+
     // gameobject in game
     private MapCubes selectedMapcube;
     public Text moneyText;
@@ -53,8 +55,7 @@ public class BuildManager : MonoBehaviour
             //when mouse cilck on UI
             if (EventSystem.current.IsPointerOverGameObject() == false)
             {
-                if(canBuild == true)
-                {
+
                     //Buil Turret
                     Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                     RaycastHit hit;
@@ -92,8 +93,7 @@ public class BuildManager : MonoBehaviour
                             }
 
                         }
-                    }
-                }
+                    }                
                 else
                 {
                     //RaycastHit hit;
@@ -111,13 +111,11 @@ public class BuildManager : MonoBehaviour
     {
         if (isOn)
         {
-            canBuild = true;
             selectdTurretData = laserTurretData;
 
         }
         else
         {
-            canBuild = false;
             selectdTurretData = null;
         }
 
@@ -142,12 +140,12 @@ public class BuildManager : MonoBehaviour
     {
         if (isOn)
         {
-            canBuild = true;
+            //canBuild = true;
             selectdTurretData = standardTurretData;
         }
         else
         {
-            canBuild = false;
+            //canBuild = false;
             selectdTurretData = null;
         }
     }
@@ -156,12 +154,10 @@ public class BuildManager : MonoBehaviour
     {
         if (isOn)
         {
-            canBuild = true;
             selectdTurretData = fireBallTurretData;
         }
         else
         {
-            canBuild = false;
             selectdTurretData = null;
         }
 
@@ -170,12 +166,10 @@ public class BuildManager : MonoBehaviour
     {
         if (isOn)
         {
-            canBuild = true;
             selectdTurretData = SnowBallTurretData;
         }
         else
         {
-            canBuild = false;
             selectdTurretData = null;
         }
 

@@ -16,6 +16,12 @@ public class Enemy : Enemy_property
     private float ContinueDamage_Timer;  //how many seconds you want to run the ContinueDamage
     private float Max_Continuedamage_timer;
     private bool IsFinish_ContinueDamage_Timer;
+    private bool Find_Portal;
+    private Transform Portal_Position;
+    [SerializeField] private GameObject Destination_FX;
+    
+    private Get_PortalTarget Get_Portal;
+    private bool IsarrivePortal;
 
     public int rate;
     bool onetimes_forCards;
@@ -43,6 +49,8 @@ public class Enemy : Enemy_property
     public bool IfFinishSubPaths1 { get => IfFinishSubPaths; set => IfFinishSubPaths = value; }
     public bool CanMove1 { get => CanMove; set => CanMove = value; }
     public NavMeshAgent Agent1 { get => Agent; set => Agent = value; }
+    public bool Find_Portal1 { get => Find_Portal; set => Find_Portal = value; }
+    public Transform Portal_Position1 { get => Portal_Position; set => Portal_Position = value; }
 
 
     //Card
@@ -53,7 +61,8 @@ public class Enemy : Enemy_property
     bool CanMove;
     // Start is called before the first frame update
     void Start()
-    {      
+    {
+        IsarrivePortal = false;
         positions = WavePoints.position;
         Max_hp = Hp;
         halfSpeed = Move_speed * 0.5f;
@@ -102,10 +111,29 @@ public class Enemy : Enemy_property
         {
             EnergyIncreasing();
         }
-        if (CanMove1)
+        if (!Find_Portal1)
         {
-            Move();
+            if (CanMove1)
+            {
+
+                Move();
+            }
         }
+        if(Find_Portal1)
+        {
+            if (Portal_Position1 != null)
+            {
+                Debug.Log("Go");
+                Move(Portal_Position1);
+            }
+        }
+        //if(Find_Portal1)
+        //{
+        //    if(Portal_Position1!=null)
+        //    {
+        //        Move(Portal_Position1);
+        //    }
+        //}
        
         Enemy_Anim.SetBool("IsDead", IsDead);
         //Debug.Log(Enemy_Velocity.magnitude);
@@ -205,10 +233,8 @@ public class Enemy : Enemy_property
         if (IfFinishSubPaths1)
         {
             IfFinishSubPaths1 = false;
-
-
-
-            InSubPath = false;
+                InSubPath = false;
+            
         }
 
 
@@ -242,6 +268,10 @@ public class Enemy : Enemy_property
             }
         }
     }
+    void Move(Transform Target)
+    {
+        Agent1.destination = Target.position;
+    }
     private int Random_Fromsubpaths(int Subpaths_indexlength)
     {
         int Get_RandomIndex;
@@ -255,7 +285,15 @@ public class Enemy : Enemy_property
     /// <summary>
     public void ReachDestination()
     {
+        
         LevelManager.Instance.Fail();     
+        GameObject.Destroy(this.gameObject);
+    }
+    private void ArrivePortal()
+    {
+        Debug.Log("Reach");
+        GameObject Portal_FX = Instantiate(Destination_FX, transform.position, Quaternion.identity);
+        GameObject.Destroy(Portal_FX, 2f);
         GameObject.Destroy(this.gameObject);
     }
 
@@ -333,9 +371,23 @@ public class Enemy : Enemy_property
         {
             IfarrivePoint = true;
         }
+        if(other.tag=="PortalTrigger")
+        {
+            Get_Portal = other.GetComponent<Get_PortalTarget>();
+            Portal_Position1 = Get_Portal.Portal_Target1;
+            Find_Portal1 = true;
+            Debug.Log("Go to Portal");
+            Debug.Log(Portal_Position1);
+        }
+        if(other.tag=="Portal")
+        {
+            ArrivePortal();
+        }
         
     }
     
+    
+
     private void OnTriggerExit(Collider other)
     {
         if (other.tag == "WayPoints" && !InSubPath)
@@ -423,7 +475,7 @@ public class Enemy : Enemy_property
     {
 
         rate = Random.Range(0, 101);
-        if (rate <= 5)
+        if (rate <= 100)
         {
             Debug.Log("rate" + rate);
             create_Card();

@@ -123,7 +123,8 @@ public class LevelManager : MonoBehaviour
                 Time.timeScale = 0;
                 canStop = false;
                 Pause.gameObject.SetActive(true);
-                //AudioListener.volume = 0;
+                AudioListener.volume = 0;
+
 
             }
         }
@@ -136,7 +137,8 @@ public class LevelManager : MonoBehaviour
                 Pause.gameObject.SetActive(false);
                 turretInfoPannel[turretPannelIndex].SetActive(false);
                 enemyInfoPannel[enemyPannelIndex].SetActive(false);
-                //AudioListener.volume = 1;
+                AudioListener.volume = 1;
+
 
             }
         }

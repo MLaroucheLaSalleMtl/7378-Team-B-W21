@@ -1,0 +1,130 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6663889897407042358
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6663889897407042357}
+  - component: {fileID: 6663889897407042356}
+  - component: {fileID: 6663889897407042359}
+  - component: {fileID: 6663889897407042354}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6663889897407042357
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6663889897407042358}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -41.509167, y: 8.8785515, z: 22.075325}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6663889897407042356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6663889897407042358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 507abde6d09a71445aebf68a5b89f8d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waves:
+  - enemyPrefb: {fileID: 1923842443043251711, guid: c82f83ef3ae31aa4e8014758a7418709, type: 3}
+    count: 1
+    rate: 0.6
+  StartPoint: {fileID: 0}
+  waveRate: 0.3
+  Text_AllWaves: {fileID: 0}
+  Text_CurrentWave: {fileID: 0}
+  waveNumber: 0
+--- !u!114 &6663889897407042359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6663889897407042358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b186f45f02ea6b349a8af77c38ae46ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  laserTurretData:
+    turretPerfab: {fileID: 2301867779320464492, guid: 0ccbcb023fbc72d47ae685d605736a2e, type: 3}
+    cost: 80
+    TurretUpgradedPrefab: {fileID: 7933293967599199008, guid: 5e61b9ab5b6935d489e50c5b94dfdce7, type: 3}
+    costUpgraded: 120
+    type: 0
+  missileTurretData:
+    turretPerfab: {fileID: 4624504047891638270, guid: 9f79be8c31a686546a68ae0887f32079, type: 3}
+    cost: 70
+    TurretUpgradedPrefab: {fileID: 695682906806957533, guid: bd30aecc9b405b04d805faa10ca2690b, type: 3}
+    costUpgraded: 90
+    type: 1
+  standardTurretData:
+    turretPerfab: {fileID: 5836791916436328383, guid: 1fa6b843e6074f542aaf152f3cb869ce, type: 3}
+    cost: 50
+    TurretUpgradedPrefab: {fileID: 7723193752889892283, guid: ef9770ac1ec85ce49b7ba0dbbb6651bc, type: 3}
+    costUpgraded: 70
+    type: 2
+  fireBallTurretData:
+    turretPerfab: {fileID: 4624504047891638270, guid: 9f79be8c31a686546a68ae0887f32079, type: 3}
+    cost: 70
+    TurretUpgradedPrefab: {fileID: 695682906806957533, guid: bd30aecc9b405b04d805faa10ca2690b, type: 3}
+    costUpgraded: 100
+    type: 0
+  SnowBallTurretData:
+    turretPerfab: {fileID: 4597334577113258256, guid: db0fd4d507d98dc4e8c74f39308d07e3, type: 3}
+    cost: 70
+    TurretUpgradedPrefab: {fileID: 5582679608395647491, guid: 69dbf9da1cb944645a0c40d4496ebc4b, type: 3}
+    costUpgraded: 100
+    type: 0
+  moneyText: {fileID: 0}
+  moneyAnim: {fileID: 0}
+  upgradeCanvas: {fileID: 0}
+  buttonUpgrade: {fileID: 0}
+  click: {fileID: 0}
+  IsCard: 1
+--- !u!114 &6663889897407042354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6663889897407042358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba1f51ba2b7352046b2f9cd160ae27fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameOverPannel: {fileID: 0}
+  endMessage: {fileID: 0}
+  Pause: {fileID: 0}
+  turretInfoPannel:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  turretPannelIndex: 0
+  enemyInfoPannel:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  enemyPannelIndex: 0

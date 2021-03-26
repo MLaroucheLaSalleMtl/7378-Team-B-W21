@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class Turret : MonoBehaviour
 {
-    public AudioClip normal;
-    public AudioClip snow;
-    public AudioClip fire;
-    AudioSource audiosource;
+     private AudioSource audiosource;
+
 
     private bullet bullet;
 
@@ -50,11 +48,10 @@ public class Turret : MonoBehaviour
 
     void Start()
     {
-        
-
+        audiosource = GetComponent<AudioSource>();
         timer = attackRate;
         IsAlive = true;
-        audiosource = GetComponent<AudioSource>();
+        
     }
 
   
@@ -146,6 +143,7 @@ public class Turret : MonoBehaviour
             GameObject bullet = GameObject.Instantiate(bulletPerfab, firePosition.position, firePosition.rotation);
             bullet.GetComponent<bullet>().SetTarget(enemys[0].transform);
             bullet.GetComponent<bullet>().LookAtEnemy();
+            audiosource.Play();
         }
         else
         {
