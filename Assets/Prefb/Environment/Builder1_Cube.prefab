@@ -115,18 +115,6 @@ PrefabInstance:
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 2128948149894907116, guid: b483676b3404a4544b5c5897dceee4f4, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 2128948149894907116, guid: b483676b3404a4544b5c5897dceee4f4, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 2128948149894907116, guid: b483676b3404a4544b5c5897dceee4f4, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 2128948149894907116, guid: b483676b3404a4544b5c5897dceee4f4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.365
       objectReference: {fileID: 0}
@@ -263,18 +251,6 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2128948149894907116, guid: b483676b3404a4544b5c5897dceee4f4, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 2128948149894907116, guid: b483676b3404a4544b5c5897dceee4f4, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 2128948149894907116, guid: b483676b3404a4544b5c5897dceee4f4, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 2128948149894907116, guid: b483676b3404a4544b5c5897dceee4f4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.365
       objectReference: {fileID: 0}
@@ -392,6 +368,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AN_Grass_2 (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 6408973971692556833, guid: b483676b3404a4544b5c5897dceee4f4, type: 3}
+      propertyPath: m_FadeMode
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b483676b3404a4544b5c5897dceee4f4, type: 3}
 --- !u!4 &1074182820591380078 stripped
@@ -406,6 +386,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1397180786401574950}
     m_Modifications:
+    - target: {fileID: 3813519991524977265, guid: d350eb392248fd048a2c03fb449f79c5, type: 3}
+      propertyPath: m_FadeMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4984988325240244053, guid: d350eb392248fd048a2c03fb449f79c5, type: 3}
       propertyPath: m_Name
       value: AN_Flowers
@@ -480,6 +464,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1397180786401574950}
     m_Modifications:
+    - target: {fileID: 3813519991524977265, guid: d350eb392248fd048a2c03fb449f79c5, type: 3}
+      propertyPath: m_FadeMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4984988325240244053, guid: d350eb392248fd048a2c03fb449f79c5, type: 3}
       propertyPath: m_Name
       value: AN_Flowers (3)
@@ -554,6 +542,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1397180786401574950}
     m_Modifications:
+    - target: {fileID: 3813519991524977265, guid: d350eb392248fd048a2c03fb449f79c5, type: 3}
+      propertyPath: m_FadeMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4984988325240244053, guid: d350eb392248fd048a2c03fb449f79c5, type: 3}
       propertyPath: m_Name
       value: AN_Flowers (1)
@@ -715,18 +707,6 @@ PrefabInstance:
       value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 3726920607317002782, guid: 49006efed6d227140b66b66c7882ffae, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3726920607317002782, guid: 49006efed6d227140b66b66c7882ffae, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3726920607317002782, guid: 49006efed6d227140b66b66c7882ffae, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3726920607317002782, guid: 49006efed6d227140b66b66c7882ffae, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.29591066
       objectReference: {fileID: 0}
@@ -840,6 +820,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AN_Grass_2 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6408973971692556833, guid: b483676b3404a4544b5c5897dceee4f4, type: 3}
+      propertyPath: m_FadeMode
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b483676b3404a4544b5c5897dceee4f4, type: 3}
 --- !u!4 &1074182821098110400 stripped
@@ -913,6 +897,10 @@ PrefabInstance:
     - target: {fileID: 3157255099049375487, guid: b483676b3404a4544b5c5897dceee4f4, type: 3}
       propertyPath: m_Name
       value: AN_Grass_2 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408973971692556833, guid: b483676b3404a4544b5c5897dceee4f4, type: 3}
+      propertyPath: m_FadeMode
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b483676b3404a4544b5c5897dceee4f4, type: 3}
@@ -988,6 +976,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: AN_Grass_2 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6408973971692556833, guid: b483676b3404a4544b5c5897dceee4f4, type: 3}
+      propertyPath: m_FadeMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408973971692556833, guid: b483676b3404a4544b5c5897dceee4f4, type: 3}
+      propertyPath: m_LODs.Array.data[1].screenRelativeHeight
+      value: 0.3949678
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408973971692556833, guid: b483676b3404a4544b5c5897dceee4f4, type: 3}
+      propertyPath: m_LODs.Array.data[2].screenRelativeHeight
+      value: 0.18854721
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b483676b3404a4544b5c5897dceee4f4, type: 3}
 --- !u!4 &1074182821170252424 stripped
@@ -1062,6 +1062,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AN_Grass_2 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 6408973971692556833, guid: b483676b3404a4544b5c5897dceee4f4, type: 3}
+      propertyPath: m_FadeMode
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b483676b3404a4544b5c5897dceee4f4, type: 3}
 --- !u!4 &1074182821830497027 stripped
@@ -1076,6 +1080,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1397180786401574950}
     m_Modifications:
+    - target: {fileID: 3813519991524977265, guid: d350eb392248fd048a2c03fb449f79c5, type: 3}
+      propertyPath: m_FadeMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4984988325240244053, guid: d350eb392248fd048a2c03fb449f79c5, type: 3}
       propertyPath: m_Name
       value: AN_Flowers (2)
@@ -1284,6 +1292,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AN_Grass_2 (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 6408973971692556833, guid: b483676b3404a4544b5c5897dceee4f4, type: 3}
+      propertyPath: m_FadeMode
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b483676b3404a4544b5c5897dceee4f4, type: 3}
 --- !u!4 &1074182822066770849 stripped
@@ -1301,18 +1313,6 @@ PrefabInstance:
     - target: {fileID: 2128948149894907116, guid: b483676b3404a4544b5c5897dceee4f4, type: 3}
       propertyPath: m_RootOrder
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2128948149894907116, guid: b483676b3404a4544b5c5897dceee4f4, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 2128948149894907116, guid: b483676b3404a4544b5c5897dceee4f4, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 2128948149894907116, guid: b483676b3404a4544b5c5897dceee4f4, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2128948149894907116, guid: b483676b3404a4544b5c5897dceee4f4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1432,6 +1432,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AN_Grass_2 (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 6408973971692556833, guid: b483676b3404a4544b5c5897dceee4f4, type: 3}
+      propertyPath: m_FadeMode
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b483676b3404a4544b5c5897dceee4f4, type: 3}
 --- !u!4 &1074182821854216447 stripped
@@ -1453,18 +1457,6 @@ PrefabInstance:
     - target: {fileID: 2401931749627868517, guid: 1085e2892f5998d4f808ccde0b4737bb, type: 3}
       propertyPath: m_RootOrder
       value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 2401931749627868517, guid: 1085e2892f5998d4f808ccde0b4737bb, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2401931749627868517, guid: 1085e2892f5998d4f808ccde0b4737bb, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2401931749627868517, guid: 1085e2892f5998d4f808ccde0b4737bb, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 2401931749627868517, guid: 1085e2892f5998d4f808ccde0b4737bb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1580,6 +1572,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: AN_Grass_2 (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 6408973971692556833, guid: b483676b3404a4544b5c5897dceee4f4, type: 3}
+      propertyPath: m_FadeMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408973971692556833, guid: b483676b3404a4544b5c5897dceee4f4, type: 3}
+      propertyPath: m_LODs.Array.data[1].screenRelativeHeight
+      value: 0.5136503
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408973971692556833, guid: b483676b3404a4544b5c5897dceee4f4, type: 3}
+      propertyPath: m_LODs.Array.data[2].screenRelativeHeight
+      value: 0.269987
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b483676b3404a4544b5c5897dceee4f4, type: 3}
 --- !u!4 &1074182821928932454 stripped
@@ -1654,6 +1658,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AN_Grass_2 (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 6408973971692556833, guid: b483676b3404a4544b5c5897dceee4f4, type: 3}
+      propertyPath: m_FadeMode
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b483676b3404a4544b5c5897dceee4f4, type: 3}
 --- !u!4 &1074182822130717342 stripped
@@ -1671,18 +1679,6 @@ PrefabInstance:
     - target: {fileID: 2128948149894907116, guid: b483676b3404a4544b5c5897dceee4f4, type: 3}
       propertyPath: m_RootOrder
       value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 2128948149894907116, guid: b483676b3404a4544b5c5897dceee4f4, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 2128948149894907116, guid: b483676b3404a4544b5c5897dceee4f4, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 2128948149894907116, guid: b483676b3404a4544b5c5897dceee4f4, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2128948149894907116, guid: b483676b3404a4544b5c5897dceee4f4, type: 3}
       propertyPath: m_LocalPosition.x

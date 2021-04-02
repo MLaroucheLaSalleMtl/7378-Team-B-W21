@@ -135,8 +135,14 @@ MonoBehaviour:
   explosionEffect: {fileID: 4178525974347802502, guid: e4db17976c82c934a98d62d02e5b86fb, type: 3}
   hpSlider: {fileID: 6096331384213015138}
   EnergySlider: {fileID: 0}
+  Destination_FX: {fileID: 0}
   rate: 0
-  Cards: []
+  Cards:
+  - {fileID: 1853332265375625629, guid: af62c91da2b9d2d43867a462b1273487, type: 3}
+  - {fileID: 8956175902463877258, guid: 67c888cd8fa0fb846a1781afe83d1f16, type: 3}
+  - {fileID: 3587106503696326176, guid: 6dc2a28ee980b634aa7a364bcd93aefe, type: 3}
+  - {fileID: 5505826362206289610, guid: 890654b81a2aa444785f8a26a986d211, type: 3}
+  CanMove: 0
 --- !u!1001 &506282660775515467
 PrefabInstance:
   m_ObjectHideFlags: 0

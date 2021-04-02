@@ -182,6 +182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 10
+  destroySelf_FX: {fileID: 5851802207990890909, guid: e0d1021b57a057042b72ca6015809ee1, type: 3}
   attackRate: 1
   bulletPerfab: {fileID: 3219950081901063690, guid: 284fe0fb7242b6d44b28a60170eaf3e9, type: 3}
   firePosition: {fileID: 7807139891642758015}
@@ -229,15 +230,15 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 6720dffabc012d6469c9b139adf8b903, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 32f565ba94f200f49adb407cce64e873, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
+  m_Pitch: 0.35
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 10
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500

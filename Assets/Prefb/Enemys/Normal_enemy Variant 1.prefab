@@ -94,12 +94,14 @@ MonoBehaviour:
   explosionEffect: {fileID: 4178525974347802502, guid: e4db17976c82c934a98d62d02e5b86fb, type: 3}
   hpSlider: {fileID: 2124853770072411518}
   EnergySlider: {fileID: 0}
+  Destination_FX: {fileID: 0}
   rate: 0
   Cards:
-  - {fileID: 7681922451105834604, guid: f6f19512082d3614a82404484dcb0c04, type: 3}
-  - {fileID: 1949220307598668717, guid: 93adaadabb0151e41849fc5b16e3cf31, type: 3}
-  - {fileID: 1057855086421144571, guid: 0323e4e8ada74194a90178fc3e5c2b3b, type: 3}
-  - {fileID: 9169570184696265046, guid: 4c86a65f2dfa8ff4d92620e66b35c094, type: 3}
+  - {fileID: 1853332265375625629, guid: af62c91da2b9d2d43867a462b1273487, type: 3}
+  - {fileID: 8956175902463877258, guid: 67c888cd8fa0fb846a1781afe83d1f16, type: 3}
+  - {fileID: 3587106503696326176, guid: 6dc2a28ee980b634aa7a364bcd93aefe, type: 3}
+  - {fileID: 5505826362206289610, guid: 890654b81a2aa444785f8a26a986d211, type: 3}
+  CanMove: 0
 --- !u!1 &2604643726876613515
 GameObject:
   m_ObjectHideFlags: 0
@@ -514,7 +516,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 192428, guid: c26833473ce06df4ba5631fd7a4b98bc, type: 3}
       propertyPath: m_Name
-      value: Normal_enemy Variant
+      value: Normal_enemy Variant 1
       objectReference: {fileID: 0}
     - target: {fileID: 192428, guid: c26833473ce06df4ba5631fd7a4b98bc, type: 3}
       propertyPath: m_TagString

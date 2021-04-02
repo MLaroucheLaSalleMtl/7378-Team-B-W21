@@ -37,30 +37,60 @@ public class EnemySpawner : MonoBehaviour
             waveNumber = waves.Length;
         }
     }
+    
+
+    private void SpawnEnemys()
+    {
+
+    }
+  
 
 
     IEnumerator SpawnEnemy()
     {
         foreach (Wave wave in waves)
         {
-            
-            for (int i = 0; i < wave.count; i++)
+           
+            for(int i=0;i<wave.count.Length; i++)
             {
-                GameObject.Instantiate(wave.enemyPrefb, StartPoint.position, Quaternion.identity);
-                EnemyCount++;
-                if (i != wave.count - 1)
-                    yield return new WaitForSeconds(wave.rate);
-                
+                for(int a=0;a<wave.count[i];a++)
+                {
+                    GameObject.Instantiate(wave.enemyPrefb[i], StartPoint.position, Quaternion.identity);
+                    EnemyCount++;
+                    if (a != wave.count[i])
+                        yield return new WaitForSeconds(wave.rate);
+                }
             }
-            while (EnemyCount > 0)
-            {
-                yield return 0;               
-            }
+
+            //for (int i = 0; i < wave.count; i++)
+            //{
+            //        GameObject.Instantiate(wave.enemyPrefb, StartPoint.position, Quaternion.identity);
+            //        EnemyCount++;
+            //        if (i != wave.count - 1)
+            //            yield return new WaitForSeconds(wave.rate);
+            //}
+            //for (int i = 0; i < wave.count2; i++)
+            //{
+            //    GameObject.Instantiate(wave.enemyPrefb2, StartPoint.position, Quaternion.identity);
+            //    EnemyCount++;
+            //    if (i != wave.count2 - 1)
+            //        yield return new WaitForSeconds(wave.rate);
+            //}
+
+
+
+
+
+            //while (EnemyCount > 0)
+            //{
+            //    yield return 0;               
+            //}
             yield return new WaitForSeconds(waveRate);
 
             waveNumber += 1;
 
         }
+        
 
         //still have enemy in game
         while (EnemyCount > 0)

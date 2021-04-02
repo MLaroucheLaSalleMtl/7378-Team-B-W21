@@ -106,18 +106,6 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8319667627475400006, guid: d350eb392248fd048a2c03fb449f79c5, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8319667627475400006, guid: d350eb392248fd048a2c03fb449f79c5, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8319667627475400006, guid: d350eb392248fd048a2c03fb449f79c5, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8319667627475400006, guid: d350eb392248fd048a2c03fb449f79c5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.3270386
       objectReference: {fileID: 0}
@@ -174,18 +162,6 @@ PrefabInstance:
     - target: {fileID: 6266571256023399258, guid: 4a691fc28e6ddb341bf0fbc1647d56d3, type: 3}
       propertyPath: m_RootOrder
       value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 6266571256023399258, guid: 4a691fc28e6ddb341bf0fbc1647d56d3, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6266571256023399258, guid: 4a691fc28e6ddb341bf0fbc1647d56d3, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6266571256023399258, guid: 4a691fc28e6ddb341bf0fbc1647d56d3, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 6266571256023399258, guid: 4a691fc28e6ddb341bf0fbc1647d56d3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -305,6 +281,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AN_Grass_2 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6408973971692556833, guid: b483676b3404a4544b5c5897dceee4f4, type: 3}
+      propertyPath: m_FadeMode
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b483676b3404a4544b5c5897dceee4f4, type: 3}
 --- !u!4 &1383934076123494606 stripped
@@ -378,6 +358,10 @@ PrefabInstance:
     - target: {fileID: 3157255099049375487, guid: b483676b3404a4544b5c5897dceee4f4, type: 3}
       propertyPath: m_Name
       value: AN_Grass_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408973971692556833, guid: b483676b3404a4544b5c5897dceee4f4, type: 3}
+      propertyPath: m_FadeMode
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b483676b3404a4544b5c5897dceee4f4, type: 3}
@@ -453,6 +437,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AN_Grass_2 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6408973971692556833, guid: b483676b3404a4544b5c5897dceee4f4, type: 3}
+      propertyPath: m_FadeMode
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b483676b3404a4544b5c5897dceee4f4, type: 3}
 --- !u!4 &1383934076733925252 stripped
@@ -470,18 +458,6 @@ PrefabInstance:
     - target: {fileID: 2128948149894907116, guid: b483676b3404a4544b5c5897dceee4f4, type: 3}
       propertyPath: m_RootOrder
       value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2128948149894907116, guid: b483676b3404a4544b5c5897dceee4f4, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2128948149894907116, guid: b483676b3404a4544b5c5897dceee4f4, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 2128948149894907116, guid: b483676b3404a4544b5c5897dceee4f4, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2128948149894907116, guid: b483676b3404a4544b5c5897dceee4f4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -601,6 +577,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: AN_Grass_2 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 6408973971692556833, guid: b483676b3404a4544b5c5897dceee4f4, type: 3}
+      propertyPath: m_FadeMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408973971692556833, guid: b483676b3404a4544b5c5897dceee4f4, type: 3}
+      propertyPath: m_LODs.Array.data[1].screenRelativeHeight
+      value: 0.5522843
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408973971692556833, guid: b483676b3404a4544b5c5897dceee4f4, type: 3}
+      propertyPath: m_LODs.Array.data[2].screenRelativeHeight
+      value: 0.269987
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b483676b3404a4544b5c5897dceee4f4, type: 3}
 --- !u!4 &1383934076879766030 stripped
@@ -615,6 +603,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1062624825132338546}
     m_Modifications:
+    - target: {fileID: 3813519991524977265, guid: d350eb392248fd048a2c03fb449f79c5, type: 3}
+      propertyPath: m_FadeMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4984988325240244053, guid: d350eb392248fd048a2c03fb449f79c5, type: 3}
       propertyPath: m_Name
       value: AN_Flowers (1)
@@ -692,18 +684,6 @@ PrefabInstance:
     - target: {fileID: 5800923772432654489, guid: 27544902da1189444a3b7eb4c0a96acd, type: 3}
       propertyPath: m_RootOrder
       value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5800923772432654489, guid: 27544902da1189444a3b7eb4c0a96acd, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5800923772432654489, guid: 27544902da1189444a3b7eb4c0a96acd, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5800923772432654489, guid: 27544902da1189444a3b7eb4c0a96acd, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 5800923772432654489, guid: 27544902da1189444a3b7eb4c0a96acd, type: 3}
       propertyPath: m_LocalPosition.x

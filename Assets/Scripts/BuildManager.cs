@@ -69,14 +69,15 @@ public class BuildManager : MonoBehaviour
                         {
                             if (money > selectdTurretData.cost)
                             {
-
+                           
                                 mapCube.BuildTurret(selectdTurretData);
                                 ChangeMoney(-selectdTurretData.cost);
+
                             }
                             else
                             {
                                 // not enough money                           
-                                moneyAnim.SetTrigger("Flicker");
+                                //moneyAnim.SetTrigger("Flicker");
                             }
                         }
                         else if (mapCube.turretGo != null)

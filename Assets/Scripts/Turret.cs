@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Turret : MonoBehaviour
 {
-     private AudioSource audiosource;
+    //audio
+    private AudioSource audiosource;
 
 
     private bullet bullet;
@@ -14,6 +15,8 @@ public class Turret : MonoBehaviour
     public float hp;
     private float max_hp;
     private bool IsAlive;
+    [SerializeField] private GameObject destroySelf_FX;
+    private Vector3 DestorySelf_Position;
 
     void OnTriggerEnter(Collider other)
     {
@@ -65,7 +68,9 @@ public class Turret : MonoBehaviour
         if(!IsAlive)
         {
 
-            DestroySelf();
+            Invoke("DestroySelf", 0.5f);
+            
+            IsAlive = true;
         }
          //heads direction
         if (enemys.Count > 0 && enemys[0] != null)
@@ -74,7 +79,7 @@ public class Turret : MonoBehaviour
             targetPosition.y = head.position.y;
             head.LookAt(targetPosition);
         }
-
+        //basic turret attack
         if (useLaser == false)
         {
             //bullet attack
@@ -88,7 +93,7 @@ public class Turret : MonoBehaviour
         }
         else if (enemys.Count > 0)
         {
-            //update laser attack
+            //update laser attack behavior
             if (laserRanderer.enabled == false)
             {
                 laserRanderer.enabled = true;
@@ -102,6 +107,7 @@ public class Turret : MonoBehaviour
             }
             if (enemys.Count > 0)
             {
+                audiosource.Play();
                 laserRanderer.SetPositions(new Vector3[] { firePosition.position, enemys[0].transform.position });
                 enemys[0].GetComponent<Enemy>().TakeDamage(damageRate * Time.deltaTime);
                 laserEffect.transform.position = enemys[0].transform.position;
@@ -116,6 +122,7 @@ public class Turret : MonoBehaviour
         {
             laserEffect.SetActive(false);
             laserRanderer.enabled = false;
+            audiosource.Stop();
         }
 
 
@@ -127,6 +134,9 @@ public class Turret : MonoBehaviour
     private void DestroySelf()
     {
         Destroy(transform.gameObject);
+        DestorySelf_Position = transform.position;
+        DestorySelf_Position.y += 2f;
+        Instantiate(destroySelf_FX, DestorySelf_Position, Quaternion.identity);
     }
 
     public void Attack()

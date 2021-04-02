@@ -9,7 +9,7 @@ public class Enemy_property : MonoBehaviour
     [SerializeField] private float lv;
     [SerializeField] private float move_speed;
     [SerializeField] private float normal_damage;
-    [SerializeField] private float magic_damage;
+    [SerializeField] private float Basement_damage;
     [SerializeField] private float defence;
     [SerializeField] private bool CanAttackTurrents;
     [SerializeField] private bool Isultimate;
@@ -22,7 +22,7 @@ public class Enemy_property : MonoBehaviour
     public float Lv { get => lv; set => lv = value; }
     public float Move_speed { get => move_speed; set => move_speed = value; }
     public float Normal_damage { get => normal_damage; set => normal_damage = value; }
-    public float Magic_damage { get => magic_damage; set => magic_damage = value; }
+    public float basement_damage { get => Basement_damage; set => Basement_damage = value; }
     public float Defence { get => defence; set => defence = value; }
     public bool CanAttackTurrents1 { get => CanAttackTurrents; set => CanAttackTurrents = value; }
     public bool Isultimate1 { get => Isultimate; set => Isultimate = value; }
@@ -46,7 +46,7 @@ public class Enemy_property : MonoBehaviour
         if(Lv==2)
         {
             Normal_damage *= 1.3f;
-            Magic_damage *= 1.3f;
+            basement_damage *= 1.3f;
             Defence *= 1.2f;
             Hp *= 1.5f;
             
@@ -54,14 +54,14 @@ public class Enemy_property : MonoBehaviour
         if(Lv==3)
         {
             Normal_damage *= 1.6f;
-            Magic_damage *= 1.6f;
+            basement_damage *= 1.6f;
             Defence *= 2f;
             Hp *= 2f;
         }
     }
     public void Attack(Turrents_Test Target)
     {
-        Target.Hp -= this.Magic_damage + this.Normal_damage;
+        Target.Hp -= this.basement_damage + this.Normal_damage;
     }
     public void Taken_Damage(Turrents_Test Target)
     {

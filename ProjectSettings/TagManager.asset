@@ -16,6 +16,7 @@ TagManager:
   - PortalTrigger
   - Portal
   - backgroundmusic
+  - TriggerRange
   layers:
   - Default
   - TransparentFX
@@ -25,8 +26,8 @@ TagManager:
   - UI
   - MapCube
   - Card
-  - 
-  - 
+  - triggerRange
+  - Portal
   - 
   - 
   - 
@@ -52,4 +53,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: New Layer
+    uniqueID: 4157654137
     locked: 0

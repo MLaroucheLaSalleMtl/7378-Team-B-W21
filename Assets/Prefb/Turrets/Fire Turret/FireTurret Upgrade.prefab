@@ -52,6 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 10
+  destroySelf_FX: {fileID: 5851802207990890909, guid: e0d1021b57a057042b72ca6015809ee1, type: 3}
   attackRate: 1
   bulletPerfab: {fileID: 3219950081901063690, guid: 284fe0fb7242b6d44b28a60170eaf3e9, type: 3}
   firePosition: {fileID: 6388352463727257056}

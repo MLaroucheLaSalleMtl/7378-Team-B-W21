@@ -9,11 +9,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1623280093043294, guid: 592d06350487a0942a84222a68acfd27, type: 3}
       propertyPath: m_Name
-      value: SharpExplosionRed
+      value: SharpExplosionRed Variant
       objectReference: {fileID: 0}
     - target: {fileID: 4138207985449652, guid: 592d06350487a0942a84222a68acfd27, type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4138207985449652, guid: 592d06350487a0942a84222a68acfd27, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4138207985449652, guid: 592d06350487a0942a84222a68acfd27, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4138207985449652, guid: 592d06350487a0942a84222a68acfd27, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4138207985449652, guid: 592d06350487a0942a84222a68acfd27, type: 3}
       propertyPath: m_LocalPosition.x

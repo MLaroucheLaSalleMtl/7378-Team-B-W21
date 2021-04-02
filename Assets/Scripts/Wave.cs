@@ -5,8 +5,10 @@ using UnityEngine;
 [System.Serializable]
 public class Wave
 { 
-    public GameObject enemyPrefb;
-    public int count;
+    public GameObject[] enemyPrefb;
+
+    public int[] count;
+
     public float rate;
 
 }

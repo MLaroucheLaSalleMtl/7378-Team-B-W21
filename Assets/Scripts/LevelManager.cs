@@ -11,6 +11,17 @@ public class LevelManager : MonoBehaviour
     public static LevelManager Instance;
     private EnemySpawner enemySpawner;
 
+    
+
+    //Peixin
+    
+    [SerializeField] private float Basement_HP;
+    private float Basement_MaxHP;
+    [SerializeField] private Text BasementHP_Display;
+    [SerializeField] private Image BasementHP_Image;
+
+    private float BasementHP_Percent;
+
     bool canStop = true;
     public Transform Pause;
 
@@ -21,13 +32,26 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject[] enemyInfoPannel;
     [SerializeField] private int enemyPannelIndex;
 
+    public float Basement_HP1 { get => Basement_HP; set => Basement_HP = value; }
+    public float Basement_MaxHP1 { get => Basement_MaxHP; set => Basement_MaxHP = value; }
+
     public void Awake()
     {
         Instance = this;
         enemySpawner = GetComponent<EnemySpawner>();
         turretInfoPannel[turretPannelIndex].SetActive(false);
-    }
 
+        Basement_MaxHP1 = Basement_HP1;
+    }
+    
+    void CaculateBasementHP()
+    {
+        
+        
+        BasementHP_Percent = Basement_HP1 / Basement_MaxHP1 * 100;
+        BasementHP_Image.fillAmount = BasementHP_Percent / 100;
+        BasementHP_Display.text = BasementHP_Percent + "%";
+    }
     //Turret Info
     public void BtmTurretInfor()
     {
@@ -116,6 +140,7 @@ public class LevelManager : MonoBehaviour
 
     private void Update()
     {
+       
         if (canStop == true)
         {
             if (Input.GetKeyDown(KeyCode.Escape))
@@ -142,5 +167,6 @@ public class LevelManager : MonoBehaviour
 
             }
         }
+        CaculateBasementHP();
     }
 }
