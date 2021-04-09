@@ -94,7 +94,7 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
+      key0: {r: 0, g: 1, b: 0.71317434, a: 1}
       key1: {r: 1, g: 1, b: 1, a: 1}
       key2: {r: 1, g: 1, b: 1, a: 1}
       key3: {r: 0, g: 0, b: 0, a: 0}
@@ -126,7 +126,7 @@ LineRenderer:
     alignment: 0
     textureMode: 0
     shadowBias: 0.5
-    generateLightingData: 0
+    generateLightingData: 1
   m_UseWorldSpace: 1
   m_Loop: 0
 --- !u!1 &2046009130874986014
@@ -144,7 +144,7 @@ GameObject:
   - component: {fileID: 9123021597588606233}
   m_Layer: 0
   m_Name: LaserTurret Upgrade
-  m_TagString: Untagged
+  m_TagString: Turrent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -189,9 +189,10 @@ MonoBehaviour:
   firePosition: {fileID: 5576741822966533667}
   head: {fileID: 5576741822708859180}
   useLaser: 1
-  damageRate: 70
+  damageRate: 1
   laserRanderer: {fileID: 885857866}
   laserEffect: {fileID: 1701597936121864387}
+  turretType: 1
 --- !u!54 &5576741823703738353
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -206,7 +207,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!135 &9049153270949485680
 SphereCollider:
@@ -230,7 +231,7 @@ AudioSource:
   m_GameObject: {fileID: 2046009130874986014}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 805a4224ab2f6ec4b8621b03bdcfdcba, type: 2}
   m_audioClip: {fileID: 8300000, guid: 6720dffabc012d6469c9b139adf8b903, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -242,9 +243,9 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 50
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -277,7 +278,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0

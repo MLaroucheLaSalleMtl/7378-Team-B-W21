@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1587250918974726}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.023, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -45,12 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c736e84d8f869d245b3d1dba36061db9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impactParticle: {fileID: 4631366699922186543, guid: 8a42f96ad96ab8e4daeb39d665816ede,
-    type: 3}
-  projectileParticle: {fileID: 3803413199744261712, guid: 9a78721fd4eb26b41bf84046c4cb8fba,
-    type: 3}
-  muzzleParticle: {fileID: 1160171902503014757, guid: 9ddd754f321565644acab9a683e8bf8d,
-    type: 3}
+  impactParticle: {fileID: 4631366699922186543, guid: 8a42f96ad96ab8e4daeb39d665816ede, type: 3}
+  projectileParticle: {fileID: 3803413199744261712, guid: 9a78721fd4eb26b41bf84046c4cb8fba, type: 3}
+  muzzleParticle: {fileID: 1160171902503014757, guid: 9ddd754f321565644acab9a683e8bf8d, type: 3}
   trailParticles: []
   colliderRadius: 0.2
   collideOffset: 0.1

@@ -51,17 +51,7 @@ public class Set_Value : MonoBehaviour
         }
         foreach (Enemy element in enemy)
         {
-            element.Move_speed = element.Move_speed * 0.2f;
-            red_timer += Time.deltaTime;
-            Debug.Log("Red begin" + element.Move_speed);
-            if (red_timer == 1f)
-            {
-
-                Redbegin = false;
-                element.Move_speed = element.Move_speed * 10f;
-                red_timer = 0f;
-                Debug.Log("Red finish" + element.Move_speed);
-            }
+            element.TakeSnowBallDamage(0);
         }
 
     }
@@ -87,17 +77,7 @@ public class Set_Value : MonoBehaviour
 
         foreach (Turret element in Turret)
         {
-            element.attackRate = element.attackRate * 2f;
-            Yellow_timer += Time.deltaTime;
-            Debug.Log("Yellow begin" + element.attackRate);
-            if (Yellow_timer == 1f)
-            {
-
-                Yellowbegin = false;
-                element.attackRate = element.attackRate * 0.5f;
-                Yellow_timer = 0f;
-                Debug.Log("Yellow finish" + element.attackRate);
-            }
+            element.AttackRateChange(0.5f, 5f);
         }
 
     }
@@ -109,7 +89,8 @@ public class Set_Value : MonoBehaviour
             enemy = FindObjectsOfType<Enemy>();
             foreach (Enemy element in enemy)
             {
-                element.Die();
+                element.StopMove();
+                element.ResetReStartMove(3f);
             }
 
         }

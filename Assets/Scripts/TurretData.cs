@@ -14,6 +14,9 @@ public class TurretData
 public enum TurretType
 {
     LaserTurret,
-    MissileTurret,
+    LaserTurretUpgrade,
+    FireBall_Turret,
+    SnowBall_Turret,
     StandardTurret
 }
+

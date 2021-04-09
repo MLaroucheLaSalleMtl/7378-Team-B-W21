@@ -10,6 +10,10 @@ public class Turret : MonoBehaviour
 
     private bullet bullet;
 
+    //Reset
+    private float ResetAttackRate1;
+    private float ResetTimer;
+
 
     private List<GameObject> enemys = new List<GameObject>();
     public float hp;
@@ -18,6 +22,8 @@ public class Turret : MonoBehaviour
     [SerializeField] private GameObject destroySelf_FX;
     private Vector3 DestorySelf_Position;
 
+    GameObject Current_enemy;
+
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == "enemy")
@@ -25,6 +31,7 @@ public class Turret : MonoBehaviour
             
             enemys.Add(other.gameObject);
         }
+       
     }
 
     void OnTriggerExit(Collider other)
@@ -35,7 +42,7 @@ public class Turret : MonoBehaviour
         }
     }
 
-    public float attackRate = 1; //times per second
+    public float attackRate; //times per second
     private float timer = 0;
     public GameObject bulletPerfab;
     public Transform firePosition;
@@ -43,17 +50,22 @@ public class Turret : MonoBehaviour
 
 
     public bool useLaser = false;
-    public float damageRate = 70;// Laser attack rate
+    public float damageRate;// Laser attack rate
     public LineRenderer laserRanderer;
     public GameObject laserEffect;
+    public TurretType turretType;
 
     public float Hp { get => hp; set => hp = value; }
+    public float Timer { get => timer; set => timer = value; }
 
     void Start()
     {
         audiosource = GetComponent<AudioSource>();
-        timer = attackRate;
+        Timer = attackRate;
         IsAlive = true;
+
+        ResetAttackRate1 = attackRate;
+        ResetTimer = timer;
         
     }
 
@@ -61,7 +73,7 @@ public class Turret : MonoBehaviour
 
     void Update()
     {
-        if(Hp<=0)
+        if (Hp<=0)
         {
             IsAlive = false;
         }     
@@ -83,10 +95,10 @@ public class Turret : MonoBehaviour
         if (useLaser == false)
         {
             //bullet attack
-            timer += Time.deltaTime;
-            if (enemys.Count > 0 && timer >= attackRate)
+            Timer += Time.deltaTime;
+            if (enemys.Count > 0 && Timer >= attackRate)
             {
-                timer = 0;
+                Timer = 0;
                 Attack();
             }
 
@@ -108,13 +120,7 @@ public class Turret : MonoBehaviour
             if (enemys.Count > 0)
             {
                 audiosource.Play();
-                laserRanderer.SetPositions(new Vector3[] { firePosition.position, enemys[0].transform.position });
-                enemys[0].GetComponent<Enemy>().TakeDamage(damageRate * Time.deltaTime);
-                laserEffect.transform.position = enemys[0].transform.position;
-                //allow lasereffect look at laser turret
-                Vector3 pos = transform.position;
-                pos.y = enemys[0].transform.position.y;
-                laserEffect.transform.LookAt(pos);
+                LaserTurretAttack();
 
             }
         }
@@ -124,12 +130,6 @@ public class Turret : MonoBehaviour
             laserRanderer.enabled = false;
             audiosource.Stop();
         }
-
-
-
-
-
-
     }
     private void DestroySelf()
     {
@@ -139,10 +139,38 @@ public class Turret : MonoBehaviour
         Instantiate(destroySelf_FX, DestorySelf_Position, Quaternion.identity);
     }
 
+    public void LaserTurretAttack()
+    {
+        laserRanderer.SetPositions(new Vector3[] { firePosition.position, enemys[0].transform.position });
+        if (turretType == TurretType.LaserTurret)
+        {
+            enemys[0].GetComponent<Enemy>().TakeDamage(damageRate * Time.deltaTime);//basic damage per second
+        }
+        if (turretType == TurretType.LaserTurretUpgrade)
+        {
+            enemys[0].GetComponent<Enemy>().TakeDamage(damageRate + Time.deltaTime*0.001f);//Update damage per second
+        }
+
+        laserEffect.transform.position = enemys[0].transform.position;
+        //allow lasereffect look at laser turret
+        Vector3 pos = transform.position;
+        pos.y = enemys[0].transform.position.y;
+        laserEffect.transform.LookAt(pos);
+    }
+
     public void Attack()
     {
+        if(enemys[0]!=null)
+        {
+            if (enemys[0].tag == "Dead")
+            {
+                enemys.Remove(enemys[0]);
+            }
+
+        }
+        
        
-        if (enemys[0] == null)
+        if (enemys[0] == null||enemys[0].tag=="Dead")
         {
             UpdateEnemy();
 
@@ -154,11 +182,18 @@ public class Turret : MonoBehaviour
             bullet.GetComponent<bullet>().SetTarget(enemys[0].transform);
             bullet.GetComponent<bullet>().LookAtEnemy();
             audiosource.Play();
+            
+           
         }
         else
         {
-            timer = attackRate;
+            Timer = attackRate;
         }
+        
+        
+       
+        
+
 
     }
 
@@ -184,5 +219,17 @@ public class Turret : MonoBehaviour
         Hp -= damage;
         
         
+    }
+    public void ResetAttackRate()
+    {
+        attackRate = ResetAttackRate1;
+        timer = ResetTimer;
+    }
+    public void AttackRateChange(float changeValue,float ResetTime)
+    {
+        attackRate *= changeValue;
+        
+
+        Invoke("ResetAttackRate", ResetTime);
     }
 }

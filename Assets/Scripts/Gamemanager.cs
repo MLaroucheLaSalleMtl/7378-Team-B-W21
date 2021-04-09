@@ -98,8 +98,8 @@ public class Gamemanager : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene(sceneName:"Demo");
-        InGame = true;
+        SceneManager.LoadScene(sceneName:"Level1");
+        
         
     }
 
@@ -126,9 +126,17 @@ public class Gamemanager : MonoBehaviour
     public void Quitgame()
     {
 
-        Application.Quit();
+        //Application.Quit();
+#if UNITY_EDITOR
+#else
+     Application.Quit();
+#endif
 
-    }
+
+
+     
+
+     }
 
     //public void Click_NextGame()
     //{
@@ -155,4 +163,5 @@ public class Gamemanager : MonoBehaviour
     //    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
     //}
+
 }

@@ -109,14 +109,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9eb5bf312e85a854283dc7d955670ede, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normal: {fileID: 8300000, guid: c248e6ee74b9c044085909588a48f839, type: 3}
-  snow: {fileID: 8300000, guid: 955b1e09039d6a84091d75b0b93b9e8f, type: 3}
-  fire: {fileID: 8300000, guid: 4a360f810c365d6469d6a21803022cdc, type: 3}
-  type: 2
+  type: 3
   damage: 10
   continuesDamage: 0
   speed: 30
-  explosionEffectPrefab: {fileID: 4178525974347802502, guid: 0fe00fcfa388ec847aa5b8c6c02c9a87, type: 3}
+  explosionEffectPrefab: {fileID: 1510452662759636, guid: a17347c42dfc98c4b861a7e41a444d6f, type: 3}
+  FireImpact_FX: {fileID: 1510452662759636, guid: a17347c42dfc98c4b861a7e41a444d6f, type: 3}
+  upGradeBulletEffectPrefab: {fileID: 0}
+  ReduceMove_FX: {fileID: 1002530091286178, guid: 2cfd9cf3b1dc4ad489f9d2a7574d2463, type: 3}
+  ReduceMove_Area: {fileID: 4628559275896526954, guid: b202dc72d04535541b01d998556e968a, type: 3}
 --- !u!54 &2605647682864212838
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -10,6 +10,7 @@ public class Enemy : Enemy_property
     public GameObject explosionEffect;
     public Slider hpSlider;
     public Slider EnergySlider;
+    [SerializeField] private GameObject SliderCanvas;
 
 
     private bool CanTakenFirstDamage;//for continue damage to make sure take one damage and take a few times continue damage.
@@ -19,6 +20,9 @@ public class Enemy : Enemy_property
     private bool Find_Portal;
     private Transform Portal_Position;
     [SerializeField] private GameObject Destination_FX;
+
+
+    [SerializeField] private GameObject ReducingMoveFX;
 
 
     private Get_PortalTarget Get_Portal;
@@ -36,17 +40,29 @@ public class Enemy : Enemy_property
     Enemy_property Enemy_prop;
     bool IsLose;
     bool IsDead;
+    bool IsFinishDead;
 
     //wavepoints
+
+
+
+    //Enemy State
+    private bool IsReducing;
 
     private Transform[] positions;
     private int Point_Index;
     private GameObject[] point_gameobject;
-    private SetsubpathBySubPath[] subpath;
+    private SetsubpathBySubPath[] MainPath;
     private bool IfarrivePoint;              //if this is true that mean enemy arrive any points position. if this is false that mean enemy exit any points position.
     private bool IfFinishSubPaths;
     private bool InSubPath;        //if in subpath so only run relative subpath fuction.
     private Vector3 Current_Destination;
+    [SerializeField] private bool CanMove;
+
+    //for undead enemy
+    [SerializeField] private bool IfUndead;
+
+    [SerializeField] private bool IsBeRevived;
 
     public bool IfFinishSubPaths1 { get => IfFinishSubPaths; set => IfFinishSubPaths = value; }
     public bool CanMove1 { get => CanMove; set => CanMove = value; }
@@ -56,6 +72,13 @@ public class Enemy : Enemy_property
     public Animator Enemy_Anim1 { get => Enemy_Anim; set => Enemy_Anim = value; }
     public bool Start_Bow1 { get => Start_Bow; set => Start_Bow = value; }
     public bool Finsh_Bow1 { get => Finsh_Bow; set => Finsh_Bow = value; }
+    public bool IsReducing1 { get => IsReducing; set => IsReducing = value; }
+    public bool InSubPath1 { get => InSubPath; set => InSubPath = value; }
+    public bool IfarrivePoint1 { get => IfarrivePoint; set => IfarrivePoint = value; }
+    public int Point_Index1 { get => Point_Index; set => Point_Index = value; }
+    public bool IsDead1 { get => IsDead; set => IsDead = value; }
+    public Vector3 Current_Destination1 { get => Current_Destination; set => Current_Destination = value; }
+    public bool IsBeRevived1 { get => IsBeRevived; set => IsBeRevived = value; }
 
 
     //Card
@@ -69,19 +92,22 @@ public class Enemy : Enemy_property
     private bool Start_Bow;
     private bool Finsh_Bow;
 
-    public bool CanMove;
+    
     // Start is called before the first frame update
     void Start()
     {
+        IsReducing1 = false;
+        IsFinishDead = false;
         IsarrivePortal = false;
         positions = WavePoints.position;
         Max_hp = Hp;
         halfSpeed = Move_speed * 0.5f;
         CanTakenFirstDamage = true;
         //PeiXin
+        
         Agent1 = GetComponent<NavMeshAgent>();
         Enemy_Anim1 = GetComponent<Animator>();
-        IsDead = false;
+        IsDead1 = false;
 
         onetimes_forCards = false;
         ContinueDamage_Timer = 5f;
@@ -90,21 +116,20 @@ public class Enemy : Enemy_property
         Set_NavSpeed();
         IsLose = false;
         Set_Property();
-        IsDead = false;
-        Point_Index = 0;
+        IsDead1 = false;
+        Point_Index1 = 0;
 
         point_gameobject = WavePoints.points_gameobject;
-        subpath = new SetsubpathBySubPath[point_gameobject.Length];
+        MainPath = new SetsubpathBySubPath[point_gameobject.Length];
 
-        InSubPath = false;
+        InSubPath1 = false;
 
-        CanMove1 = true;
 
         //Bomber
 
         for (int i = 0; i < point_gameobject.Length; i++)
         {
-            subpath[i] = point_gameobject[i].GetComponent<SetsubpathBySubPath>();
+            MainPath[i] = point_gameobject[i].GetComponent<SetsubpathBySubPath>();
 
         }
 
@@ -120,11 +145,25 @@ public class Enemy : Enemy_property
 
 
     }
+    private void SetSlider()
+    {
+        if(!IsDead1)
+        {
+            hpSlider.value = Hp / Max_hp;
+            if(IfUsingEnergy1)
+            {
+                EnergySlider.value = Energy1 / Max_Energy1;
+            }
+            
+        }
+        
+    }
 
     // Update is called once per frame
     void Update()
     {
-        if (Isultimate1)
+        SetSlider();
+        if (IfUsingEnergy1)
         {
             EnergyIncreasing();
             if (Energy1 >= 100f)
@@ -160,7 +199,7 @@ public class Enemy : Enemy_property
         //    }
         //}
 
-        Enemy_Anim1.SetBool("IsDead", IsDead);
+        Enemy_Anim1.SetBool("IsDead", IsDead1);
         //Debug.Log(Enemy_Velocity.magnitude);
         Enemy_Velocity = Agent1.velocity;
         Enemy_Anim1.SetFloat("Magnitude", Enemy_Velocity.magnitude);
@@ -168,28 +207,46 @@ public class Enemy : Enemy_property
         {
             IsLose = true;
         }
-        if (this.Hp == 0)
+        if (this.Hp <= 0)
         {
-            IsDead = true;
+            IsDead1 = true;
 
         }
-        if (IsDead)
+        if (IsDead1&&!IsFinishDead)
         {
-            //Drop_rate();
-
-            //if (!onetimes_forCards)
-            //{
-
-            //    Drop();
-            //    onetimes_forCards = true;
-            //}
-            Destroy(transform.gameObject, 4f);
+            IsFinishDead = true;
+            Die();
+            
+            
+            
+            
         }
-        //Hp = Hp;
+        
+        
+    }
+    public void GetMovingValueFromOthers(Enemy enemy)
+    {
+        this.InSubPath1 = enemy.InSubPath1;
+        this.IfFinishSubPaths1 = enemy.IfFinishSubPaths1;
+        this.IfarrivePoint1 = enemy.IfarrivePoint1;
+        this.Point_Index1 = enemy.Point_Index1;
+        this.Find_Portal1 = enemy.Find_Portal1;
+        this.Portal_Position1 = enemy.Portal_Position1;
 
-        //Debug.Log(Hp);
+        this.Current_Destination1 = enemy.Current_Destination1;
+        if(this.Current_Destination1!=null)
+        {
+            
+            this.Agent1.destination = this.Current_Destination1;
+        }
 
-        Enemy_Anim1.SetBool("IsDead", IsDead);
+       
+        
+        Debug.Log(Point_Index1);
+        
+        //this.Agent1.destination = enemy.Agent1.destination;
+        
+        
     }
     private void Set_NavSpeed()
     {
@@ -218,23 +275,24 @@ public class Enemy : Enemy_property
     public void StopMove()
     {
         CanMove1 = false;
-        Current_Destination = Agent1.destination;
+        Current_Destination1 = Agent1.destination;
         Agent1.ResetPath();
-        Debug.Log("Stop");
     }
     public void RestartMove()
     {
         CanMove1 = true;
-        Agent1.destination = Current_Destination;
+        if(Current_Destination1!=null)
+        {
+            Agent1.destination = Current_Destination1;
+        }
+        if(Current_Destination1==null)
+        {
+
+        }
+       
 
     }
 
-    private void Enemy_die()   //PeiXin
-    {
-        Enemy_Anim1.SetBool("IsDead", true);
-        Invoke("Destroy_Gameobject", 3f);
-
-    }
     private void Destroy_Gameobject()
     {
         Destroy(this.gameObject);
@@ -245,42 +303,48 @@ public class Enemy : Enemy_property
     void Move()
     {
 
-
-        if (!InSubPath)
+        if(!IsBeRevived1)
         {
+            if (!InSubPath1)
+            {
+                Current_Destination1= positions[Point_Index1].position;
+                Agent1.destination = Current_Destination1;
 
-            Agent1.destination = positions[Point_Index].position;
 
 
-
+            }
+        }
+       if(IsBeRevived1)
+        {
+            Agent1.destination = Current_Destination1;
         }
         if (IfFinishSubPaths1)
         {
             IfFinishSubPaths1 = false;
-            InSubPath = false;
+            InSubPath1 = false;
 
         }
 
 
-        if (IfarrivePoint)
+        if (IfarrivePoint1)
         {
-            IfarrivePoint = false;
-            if (subpath[Point_Index].NextPathIsSubpath)
+            IfarrivePoint1 = false;
+            if (MainPath[Point_Index1].NextPathIsSubpath)
             {
-                InSubPath = true;
-                int subpath_length = subpath[Point_Index].Subpaths.Length;
-
-                Agent1.destination = subpath[Point_Index].Subpaths[Random_Fromsubpaths(subpath_length)].transform.position;
-                if (Point_Index < positions.Length)
+                InSubPath1 = true;
+                int subpath_length = MainPath[Point_Index1].Subpaths.Length;
+                Current_Destination1= MainPath[Point_Index1].Subpaths[Random_Fromsubpaths(subpath_length)].transform.position;
+                Agent1.destination = Current_Destination1;
+                if (Point_Index1 < positions.Length)
                 {
-                    Point_Index++;
+                    Point_Index1++;
                 }
             }
-            if (!subpath[Point_Index].NextPathIsSubpath)
+            if (!MainPath[Point_Index1].NextPathIsSubpath)
             {
-                if (Point_Index < positions.Length - 1)
+                if (Point_Index1 < positions.Length - 1)
                 {
-                    Point_Index++;
+                    Point_Index1++;
                 }
             }
         }
@@ -303,7 +367,7 @@ public class Enemy : Enemy_property
     public void ReachDestination()
     {
 
-        LevelManager.Instance.Fail();
+        //LevelManager.Instance.Fail();
         GameObject.Destroy(this.gameObject);
     }
     private void ArrivePortal()
@@ -323,35 +387,49 @@ public class Enemy : Enemy_property
 
     void OnDestroy()
     {
-        EnemySpawner.EnemyCount--;
+        //EnemySpawner.EnemyCount--;
     }
 
     public void TakeDamage(float damage)
     {
         if (Hp <= 0) return;
-        Hp -= damage;
+
+        Hp = Hp - DefenceDamage(damage);
 
         hpSlider.value = (float)Hp / Max_hp;
-        if (Hp <= 0)
+        
+    }
+    public float DefenceDamage(float damage)
+    {
+        float NewDamage = 0f;
+        float Taken_DamagePercentage = (100 - Defence)/100 ;
+        if(Taken_DamagePercentage>=0&&Taken_DamagePercentage<=1)
         {
-            Die();
-            BuildManager.money += 10;
-
+             NewDamage= damage * Taken_DamagePercentage;
+            
         }
+        return NewDamage;
+
     }
     public void TakenDamagePerSeconds(float damage)
     {
         if (Hp <= 0) return;
-        Hp -= damage * Time.deltaTime;
+        Hp -= DefenceDamage(damage) *Time.deltaTime;
 
         hpSlider.value = (float)Hp / Max_hp;
-        if (Hp <= 0)
-        {
-            Die();
-            BuildManager.money += 10;
-
-        }
+        
+        
     }
+    private void ReSetMoveSpeed()
+    {
+        Agent1.speed = Move_speed;
+        IsReducing1 = false;
+    }
+    public void ResetReStartMove(float ResetTime)
+    {
+        Invoke("RestartMove", ResetTime);
+    }
+
 
 
 
@@ -381,19 +459,15 @@ public class Enemy : Enemy_property
         }
 
     }
-    private void StopMoving()
-    {
-        Agent1.ResetPath();
-    }
     private void OnTriggerEnter(Collider other)
     {
         //if (other.tag == "Turrent")
         //{
         //    Use_FireBall = true;
         //}
-        if (other.tag == "WayPoints" && !InSubPath)
+        if (other.tag == "WayPoints" && !InSubPath1)
         {
-            IfarrivePoint = true;
+            IfarrivePoint1 = true;
         }
         if (other.tag == "PortalTrigger")
         {
@@ -414,9 +488,9 @@ public class Enemy : Enemy_property
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "WayPoints" && !InSubPath)
+        if (other.tag == "WayPoints" && !InSubPath1)
         {
-            IfarrivePoint = false;
+            IfarrivePoint1 = false;
         }
     }
     private void OnCollisionEnter(Collision collision)
@@ -437,22 +511,37 @@ public class Enemy : Enemy_property
     public void TakeSnowBallDamage(float damage)
     {
         if (Hp <= 0) return;
-        Hp -= damage;
-        Move_speed = halfSpeed;
-        hpSlider.value = (float)Hp / Max_hp;
-        if (Hp <= 0)
-        {
-            Die();
-            BuildManager.money += 10;
-
-        }
+        TakeDamage(damage);
+        Agent1.speed = halfSpeed;
+        GameObject ReducingFX = Instantiate(ReducingMoveFX, transform.position, Quaternion.identity);
+        ReducingFX.transform.parent = transform;
+        Destroy(ReducingFX, 5f);
+        Invoke("ReSetMoveSpeed", 5f);
+        
+        
     }
     public void Die()
     {
-        Drop();
-        GameObject effect = GameObject.Instantiate(explosionEffect, transform.position, transform.rotation);
+        //Drop();
+        StopMove();
+        BuildManager.money += 10;
+        Vector3 explosionEffectPosition = transform.position;
+        explosionEffectPosition.y += 2f;
+        GameObject effect = GameObject.Instantiate(explosionEffect, explosionEffectPosition, transform.rotation);
         Destroy(effect, 1);
-        Destroy(this.gameObject);
+        if (!IfUndead)
+        {
+           
+            Destroy(this.gameObject, 2f);
+        }
+        if(IfUndead)
+        {
+           
+            
+            SliderCanvas.SetActive(false);
+            tag = "Dead";
+        }
+        EnemySpawner.EnemyCount--;
 
 
     }

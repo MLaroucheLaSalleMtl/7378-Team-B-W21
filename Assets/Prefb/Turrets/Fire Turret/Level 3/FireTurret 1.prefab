@@ -114,13 +114,14 @@ MonoBehaviour:
   hp: 100
   destroySelf_FX: {fileID: 5851802207990890909, guid: e0d1021b57a057042b72ca6015809ee1, type: 3}
   attackRate: 1
-  bulletPerfab: {fileID: 3219950081901063690, guid: 284fe0fb7242b6d44b28a60170eaf3e9, type: 3}
+  bulletPerfab: {fileID: 147436, guid: 3b671081e44be1c4aa4355e8ba6e8a5e, type: 3}
   firePosition: {fileID: 1237921161985243075}
   head: {fileID: 1237921161234217164}
   useLaser: 0
   damageRate: 70
   laserRanderer: {fileID: 0}
   laserEffect: {fileID: 0}
+  turretType: 0
 --- !u!135 &2439938812905760144
 SphereCollider:
   m_ObjectHideFlags: 0

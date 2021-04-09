@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Enemy_property : MonoBehaviour
 {
+    public enum enemy_type{
+        Skeleton, SkeletonArcher, Bomber, ArcherCarrier, CannonCarrier, DeadWizard, dogman, Ghost, GhostShooter, GreenArcher ,DeathKnight, Healer
+
+    }
     [SerializeField] private float hp;
     private float max_hp;
     [SerializeField] private float lv;
@@ -11,11 +15,11 @@ public class Enemy_property : MonoBehaviour
     [SerializeField] private float normal_damage;
     [SerializeField] private float Basement_damage;
     [SerializeField] private float defence;
-    [SerializeField] private bool CanAttackTurrents;
-    [SerializeField] private bool Isultimate;
+    [SerializeField] private bool IfUsingEnergy;
     private float Energy;
     private float Max_Energy;
     [SerializeField] private float EnergySpeed;
+     public enemy_type EnemyType;
 
     public float Hp { get => hp; set => hp = value; }
     public float Max_hp { get => max_hp; set => max_hp = value; }
@@ -24,8 +28,7 @@ public class Enemy_property : MonoBehaviour
     public float Normal_damage { get => normal_damage; set => normal_damage = value; }
     public float basement_damage { get => Basement_damage; set => Basement_damage = value; }
     public float Defence { get => defence; set => defence = value; }
-    public bool CanAttackTurrents1 { get => CanAttackTurrents; set => CanAttackTurrents = value; }
-    public bool Isultimate1 { get => Isultimate; set => Isultimate = value; }
+    public bool IfUsingEnergy1 { get => IfUsingEnergy; set => IfUsingEnergy = value; }
     public float Energy1 { get => Energy; set => Energy = value; }
     public float Max_Energy1 { get => Max_Energy; set => Max_Energy = value; }
     public float EnergySpeed1 { get => EnergySpeed; set => EnergySpeed = value; }

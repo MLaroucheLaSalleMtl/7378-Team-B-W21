@@ -17,6 +17,8 @@ TagManager:
   - Portal
   - backgroundmusic
   - TriggerRange
+  - Dead
+  - Camera
   layers:
   - Default
   - TransparentFX
@@ -28,7 +30,7 @@ TagManager:
   - Card
   - triggerRange
   - Portal
-  - 
+  - Panel
   - 
   - 
   - 

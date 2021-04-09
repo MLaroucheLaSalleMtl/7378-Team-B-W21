@@ -21,9 +21,36 @@ public class Bow_Shooting : MonoBehaviour
     private bool IfArrowImpact;
     private float ReMove_Timer;
     private float Reset_ReMoveTimer;
+
+    //for children enemy
+    private Animator Anim;
+    [SerializeField] private float Damage;
+    [SerializeField] bool IsChildrenEnemy;
+     private float Energy;
+    [SerializeField] private float EnergySpeed;
+    private bool StartShoot;
+    private bool FinishShoot;
+    private float Max_AttackRate;
+    private Fire_ShootReceiver Fire_receiver;
+    [SerializeField] private Enemy ParentEnemy;
     void Start()
     {
-        enemy = Enemy_GameObject.GetComponent<Enemy>();
+        
+        StartShoot = false;
+        FinishShoot = false;
+        if(IsChildrenEnemy)
+        {
+            Anim = Enemy_GameObject.GetComponent<Animator>();
+            Arrow_Damage = Damage;
+            Max_AttackRate = Energy;
+            Fire_receiver = Enemy_GameObject.GetComponent<Fire_ShootReceiver>();
+        }
+        if(!IsChildrenEnemy)
+        {
+            enemy = Enemy_GameObject.GetComponent<Enemy>();
+            Arrow_Damage = enemy.Normal_damage;
+        }
+        
         Fire = false;
         Finish_Fire = false;
         Find_Turret = false;
@@ -31,38 +58,54 @@ public class Bow_Shooting : MonoBehaviour
         In_Shooting = false;
         IfArrowImpact = false;
         Arrow1 = Arrow;
-        Arrow_Damage = enemy.Normal_damage;
+        
         ReMove_Timer = 3f;
         Reset_ReMoveTimer = ReMove_Timer;
     }
-    private void OnTriggerEnter(Collider other)
+  
+    private void OnTriggerStay(Collider other)
     {
-        
         if(other.tag=="Turrent")
         {
-            
             Distance = Vector3.Distance(transform.position, other.transform.position);
-            if(Distance>20f)
+            if (Distance > 20f)
             {
-                
-                if(enemy.Energy1>=100&&!Find_Turret)
-                {
-                    Debug.Log("In trigger");
-                    Find_Turret = true;
-                    enemy.Energy1 = 0;
-                    enemy.StopMove();
-                    Invoke("Reset_move",2f);
 
-                    turrent_Target = other.transform.gameObject;
-                    Arrow_ArrivePosition = turrent_Target.transform.position;
-                    Arrow_ArrivePosition.y += 2f;
-                    
+                if (!IsChildrenEnemy)
+                {
+
+                    if (enemy.Energy1 >= 100 && !Find_Turret)
+                    {
+                        Find_Turret = true;
+                        enemy.Energy1 = 0;
+                        enemy.StopMove();
+                        Invoke("Reset_move", 2f);
+
+                        turrent_Target = other.transform.gameObject;
+                        Arrow_ArrivePosition = turrent_Target.transform.position;
+                        Arrow_ArrivePosition.y += 2f;
+
+                    }
+
                 }
-                
+                if (IsChildrenEnemy)
+                {
+
+                    if (ParentEnemy.Energy1 >= 100 && !Find_Turret)
+                    {
+                        Find_Turret = true;
+                        ParentEnemy.Energy1 = 0f;
+                        turrent_Target = other.transform.gameObject;
+                        Arrow_ArrivePosition = turrent_Target.transform.position;
+                        Arrow_ArrivePosition.y += 2f;
+
+                    }
+                }
             }
         }
+       
     }
-    
+
 
     private void Shooting(Transform Target)
     {
@@ -77,28 +120,39 @@ public class Bow_Shooting : MonoBehaviour
 
         }
         
-        if (enemy.Start_Bow1)
+        if(!IsChildrenEnemy)
         {
-            Debug.Log(Fire);
-
-                Arrow1 = Instantiate(Arrow, Arrow_StartPosition.position, Quaternion.identity);
-            Destroy(Arrow1, 3f);
-            if(Arrow1!=null)
+            if (enemy.Start_Bow1)
             {
-                Arrow1.transform.LookAt(Target);
+                Arrow1 = Instantiate(Arrow, Arrow_StartPosition.position, Quaternion.identity);
+                Destroy(Arrow1, 3f);
+                if (Arrow1 != null)
+                {
+                    Arrow1.transform.LookAt(Target);
+                }
+                In_Shooting = true;
+                enemy.Start_Bow1 = false;
             }
-               
-          
-
-              
-            In_Shooting = true;
-            enemy.Start_Bow1 = false;
+            if (enemy.Finsh_Bow1)
+            {
+                Debug.Log("Restart");
+                enemy.RestartMove();
+                enemy.Finsh_Bow1 = false;
+            }
         }
-        if (enemy.Finsh_Bow1)
+        if(IsChildrenEnemy)
         {
-            Debug.Log("Restart");
-            enemy.RestartMove();
-            enemy.Finsh_Bow1 = false;
+            if (Fire_receiver.StartShoot1)
+            {
+                Arrow1 = Instantiate(Arrow, Arrow_StartPosition.position, Quaternion.identity);
+                Destroy(Arrow1, 3f);
+                if (Arrow1 != null)
+                {
+                    Arrow1.transform.LookAt(Target);
+                }
+                In_Shooting = true;
+                Fire_receiver.StartShoot1 = false;
+            }
         }
         if(In_Shooting)
         {
@@ -127,9 +181,6 @@ public class Bow_Shooting : MonoBehaviour
 
             }
         }
-
-
-
     }
     private void Reset_move()
     {
@@ -137,15 +188,21 @@ public class Bow_Shooting : MonoBehaviour
     }
     private void Set_BowShootAnim()
     {
-        enemy.Enemy_Anim1.SetTrigger("Bow");
+        if(!IsChildrenEnemy)
+        {
+            enemy.Enemy_Anim1.SetTrigger("Bow");
+        }
+        if(IsChildrenEnemy)
+        {
+            Anim.SetTrigger("Bow");
+        }
+        
     }
     
 
     // Update is called once per frame
     void Update()
     {
-        
-        
         if (turrent_Target != null)
         {
             Shooting(turrent_Target.transform);
@@ -153,6 +210,4 @@ public class Bow_Shooting : MonoBehaviour
             
         
     }
-    
-    
 }

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class bombard : MonoBehaviour
 {
-    [SerializeField] private GameObject Enemy_GameObject;
     [SerializeField] private Enemy enemy;
     private List<GameObject> TurrentGameObject_List;
     private List<Turret> turrent_list;

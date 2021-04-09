@@ -11,6 +11,9 @@ public class BuildManager : MonoBehaviour
     public TurretData standardTurretData;
     public TurretData fireBallTurretData;
     public TurretData SnowBallTurretData;
+
+
+    [SerializeField] private Mask RaycastIgnoreMask;
     
 
     //turret to be build
@@ -20,13 +23,18 @@ public class BuildManager : MonoBehaviour
     // gameobject in game
     private MapCubes selectedMapcube;
     public Text moneyText;
+    public Text UpgradeMoneyText;
+    public Text DestroyMoneyText;
+    private float DestroyMoney;
     public Animator moneyAnim;
-    public static int money = 0;
+    public static float money = 0;
     public GameObject upgradeCanvas;
     public Button buttonUpgrade;
     private Set_Value PowerUp;
 
     private bool canBuild;
+
+    private Transform MyCamera;
 
     //cards
     public click click;
@@ -42,13 +50,17 @@ public class BuildManager : MonoBehaviour
     {
         money = 500;
         moneyText.text = "$" + money;
+        //MyCamera = GameObject.FindWithTag("Camera").transform;
         //click = new click();
+
+       
     }
 
     // Update is called once per frame
     void Update()
     {
         moneyText.text = "$" + money;
+
         //Check mouse
         if (Input.GetMouseButtonDown(0))
         {
@@ -59,7 +71,9 @@ public class BuildManager : MonoBehaviour
                     //Buil Turret
                     Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                     RaycastHit hit;
+                 
                     bool isCollider = Physics.Raycast(ray, out hit, 1000, LayerMask.GetMask("MapCube"));
+                
 
                     if (isCollider)
                     {
@@ -83,27 +97,29 @@ public class BuildManager : MonoBehaviour
                         else if (mapCube.turretGo != null)
                         {// to upGrade 
                             selectedMapcube = mapCube;
+                        UpgradeMoneyText.text = "-" + selectdTurretData.costUpgraded.ToString();
+                        DestroyMoneyText.text = "+" + DestroyMoney.ToString();
+                        DestroyMoney = selectdTurretData.cost * 0.5f;
 
-                            if (mapCube == selectedMapcube && upgradeCanvas.activeInHierarchy)
+                        if (mapCube == selectedMapcube && upgradeCanvas.activeInHierarchy)
                             {
                                 HideUpgradeUI();
                             }
                             else
                             {
                                 ShowUpgradeUI(mapCube.transform.position, mapCube.isUpGraded);
+                            
                             }
 
                         }
                     }                
                 else
                 {
-                    //RaycastHit hit;
-                    //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                    //IsCard = Physics.Raycast(ray, out hit, 1000, LayerMask.GetMask("Card"));
                 }
 
             }
         }
+
     }
 
 
@@ -182,7 +198,15 @@ public class BuildManager : MonoBehaviour
     {
         upgradeCanvas.SetActive(true);
         upgradeCanvas.transform.position = pos;
+        pos.y += 5;
         buttonUpgrade.interactable = !isDisableUpgrade;
+    }
+    void LookAtCamera()
+    {
+        if(upgradeCanvas.activeSelf)
+        {
+            upgradeCanvas.transform.LookAt(MyCamera);
+        }
     }
 
     void HideUpgradeUI()
@@ -209,6 +233,6 @@ public class BuildManager : MonoBehaviour
     {
         selectedMapcube.DestroyTurret();
         HideUpgradeUI();
-        money += 30;
+        money += DestroyMoney;
     }
 }

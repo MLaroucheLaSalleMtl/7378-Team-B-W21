@@ -7,14 +7,19 @@ using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour
 {
     public GameObject gameOverPannel;
+    public GameObject gameWinPannel;
+    public GameObject settingPannel;
+    //public GameObject ingameUIPannel;
     public Text endMessage;
     public static LevelManager Instance;
     private EnemySpawner enemySpawner;
+    public GameObject IngameUI;
+    [SerializeField] private int sceneIndex;
 
-    
+
 
     //Peixin
-    
+
     [SerializeField] private float Basement_HP;
     private float Basement_MaxHP;
     [SerializeField] private Text BasementHP_Display;
@@ -25,12 +30,7 @@ public class LevelManager : MonoBehaviour
     bool canStop = true;
     public Transform Pause;
 
-    [Header("Info of pannel")]
-    //Show Information pannel
-    [SerializeField] private GameObject[] turretInfoPannel;
-    [SerializeField] private int turretPannelIndex;
-    [SerializeField] private GameObject[] enemyInfoPannel;
-    [SerializeField] private int enemyPannelIndex;
+   
 
     public float Basement_HP1 { get => Basement_HP; set => Basement_HP = value; }
     public float Basement_MaxHP1 { get => Basement_MaxHP; set => Basement_MaxHP = value; }
@@ -39,9 +39,10 @@ public class LevelManager : MonoBehaviour
     {
         Instance = this;
         enemySpawner = GetComponent<EnemySpawner>();
-        turretInfoPannel[turretPannelIndex].SetActive(false);
+        //turretInfoPannel[turretPannelIndex].SetActive(false);
 
         Basement_MaxHP1 = Basement_HP1;
+        Time.timeScale = 1;
     }
     
     void CaculateBasementHP()
@@ -52,73 +53,26 @@ public class LevelManager : MonoBehaviour
         BasementHP_Image.fillAmount = BasementHP_Percent / 100;
         BasementHP_Display.text = BasementHP_Percent + "%";
     }
-    //Turret Info
-    public void BtmTurretInfor()
+
+    
+    public void Btmsetting()
     {
-        turretPannelIndex = 0;
-        turretInfoPannel[turretPannelIndex].SetActive(true);
+        settingPannel.SetActive(true);
         Pause.gameObject.SetActive(false);
     }
-
-    public void BtmTurretBackToPause()
+    public void BtmsettingBackToPause()
     {
-        turretInfoPannel[turretPannelIndex].SetActive(false);
+        settingPannel.SetActive(false);
         Pause.gameObject.SetActive(true);
-    }
-
-    public void BtmTurretNextPage()
-    {
-
-        if (turretPannelIndex < turretInfoPannel.Length)
-        {
-            turretInfoPannel[turretPannelIndex].SetActive(false);
-            turretPannelIndex += 1;
-            turretInfoPannel[turretPannelIndex].SetActive(true);
-        }
-    }
-
-    public void BtmTurretPreviousPage()
-    {
-        turretInfoPannel[turretPannelIndex].SetActive(false);
-        turretPannelIndex -= 1;
-        turretInfoPannel[turretPannelIndex].SetActive(true);
-    }
-
-    //Enemy Info
-    public void BtmEnemyInfor()
-    {
-        enemyPannelIndex = 0;
-        enemyInfoPannel[enemyPannelIndex].SetActive(true);
-        Pause.gameObject.SetActive(false);
-    }
-    public void BtmEnemyBackToPause()
-    {
-        enemyInfoPannel[enemyPannelIndex].SetActive(false);
-        Pause.gameObject.SetActive(true);
-    }
-    public void BtmEnemyNextPage()
-    {
-
-        if (enemyPannelIndex < enemyInfoPannel.Length)
-        {
-            enemyInfoPannel[enemyPannelIndex].SetActive(false);
-            enemyPannelIndex += 1;
-            enemyInfoPannel[enemyPannelIndex].SetActive(true);
-        }
-    }
-    public void BtmEnemyPreviousPage()
-    {
-        enemyInfoPannel[enemyPannelIndex].SetActive(false);
-        enemyPannelIndex -= 1;
-        enemyInfoPannel[enemyPannelIndex].SetActive(true);
     }
 
 
 
     public void Win()
     {
-        gameOverPannel.SetActive(true);
-        endMessage.text = "Victory!";
+
+        gameWinPannel.SetActive(true);
+        Time.timeScale = 0;
     }
 
     public void Fail()
@@ -132,12 +86,33 @@ public class LevelManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+    public void BtmNextGame()
+    {
+        sceneIndex++;
+        SceneManager.LoadScene(sceneIndex);
+    }
 
     public void BtmMenu()
     {
         SceneManager.LoadScene(0);
     }
+    public void SetQuality (int qualityIndex)
+    {
+        QualitySettings.SetQualityLevel(qualityIndex);
+    }
+    public void Backtogame()
+    {
+        Time.timeScale = 1;
+        Pause.gameObject.SetActive(false);
 
+        canStop = true;
+        IngameUI.SetActive(true);
+        settingPannel.SetActive(false);
+        //turretInfoPannel[turretPannelIndex].SetActive(false);
+        //enemyInfoPannel[enemyPannelIndex].SetActive(false);
+        //ingameUIPannel.SetActive(true);
+        AudioListener.volume = 1;
+    }
     private void Update()
     {
        
@@ -148,6 +123,8 @@ public class LevelManager : MonoBehaviour
                 Time.timeScale = 0;
                 canStop = false;
                 Pause.gameObject.SetActive(true);
+                IngameUI.SetActive(false);
+                //ingameUIPannel.SetActive(false);
                 AudioListener.volume = 0;
 
 
@@ -157,16 +134,17 @@ public class LevelManager : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                Time.timeScale = 1;
-                canStop = true;
-                Pause.gameObject.SetActive(false);
-                turretInfoPannel[turretPannelIndex].SetActive(false);
-                enemyInfoPannel[enemyPannelIndex].SetActive(false);
-                AudioListener.volume = 1;
+
+                Backtogame();
 
 
             }
         }
         CaculateBasementHP();
+
+        if(Basement_HP <=0)
+        {
+            Fail();
+        }
     }
 }

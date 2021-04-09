@@ -10,6 +10,8 @@ public class ViewController : MonoBehaviour
     public float mouseSpeed = 60;
     float rotationSpeed = -100.0f;
 
+    [SerializeField] private bool ForLevel3;
+
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +31,16 @@ public class ViewController : MonoBehaviour
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
         float mouse = Input.GetAxis("Mouse ScrollWheel");
-        transform.Translate(new Vector3(h * speed, mouse * mouseSpeed, v * speed) * Time.deltaTime, Space.Self);
+        
+        if(!ForLevel3)
+        {
+            transform.Translate(new Vector3(h * speed, mouse * mouseSpeed, v * speed) * Time.deltaTime, Space.Self);
+        }
+
+        if(ForLevel3)
+        {
+            transform.Translate(new Vector3(v * speed, mouse * mouseSpeed, h * -speed) * Time.deltaTime, Space.Self);
+        }
         if (Input.GetKey(KeyCode.Q))
         {
             transform.Rotate(Vector3.up, 45 * rotationSpeed * Time.deltaTime * 0.01f, Space.Self);

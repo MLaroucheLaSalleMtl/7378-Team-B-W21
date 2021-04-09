@@ -72,12 +72,11 @@ GameObject:
   m_Component:
   - component: {fileID: 5443068243128801229}
   - component: {fileID: 3525030827728017877}
-  - component: {fileID: 2051911709745214444}
   - component: {fileID: 3208892820450248813}
   - component: {fileID: 5039014379513633308}
   m_Layer: 0
   m_Name: SnowBall_Turret Upgrade
-  m_TagString: Untagged
+  m_TagString: Turrent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -115,30 +114,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 10
   destroySelf_FX: {fileID: 5851802207990890909, guid: e0d1021b57a057042b72ca6015809ee1, type: 3}
-  attackRate: 1
-  bulletPerfab: {fileID: 3358453675455646607, guid: 10250402a796e0a4ea11fb71b413a7bf, type: 3}
+  attackRate: 5
+  bulletPerfab: {fileID: 3358453675455646607, guid: 1142696086c622244bb3366f8e2eb9fc, type: 3}
   firePosition: {fileID: 2051911711287614014}
   head: {fileID: 2051911710496740657}
   useLaser: 0
-  damageRate: 70
+  damageRate: 1000
   laserRanderer: {fileID: 0}
   laserEffect: {fileID: 0}
---- !u!54 &2051911709745214444
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5582679608395647491}
-  serializedVersion: 2
-  m_Mass: 5
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  turretType: 0
 --- !u!135 &3208892820450248813
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -161,7 +145,7 @@ AudioSource:
   m_GameObject: {fileID: 5582679608395647491}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 805a4224ab2f6ec4b8621b03bdcfdcba, type: 2}
   m_audioClip: {fileID: 8300000, guid: 955b1e09039d6a84091d75b0b93b9e8f, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -173,9 +157,9 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 50
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -208,7 +192,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0

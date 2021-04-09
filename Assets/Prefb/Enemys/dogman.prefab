@@ -600,7 +600,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0.5, y: 13.9}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1422,10 +1422,10 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 3
 --- !u!136 &836175202944501151
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1478,18 +1478,22 @@ MonoBehaviour:
   lv: 2
   move_speed: 5
   normal_damage: 50
-  magic_damage: 0
+  Basement_damage: 0
   defence: 20
-  CanAttackTurrents: 0
-  Isultimate: 1
-  EnergySpeed: 25
+  IfUsingEnergy: 1
+  EnergySpeed: 5
+  EnemyType: 6
   explosionEffect: {fileID: 4091232252398538715, guid: 81b58e6d28ee1414b9171ca0489ec86c, type: 3}
   hpSlider: {fileID: 6342924899832917175}
   EnergySlider: {fileID: 836175203560483797}
-  Destination_FX: {fileID: 0}
+  SliderCanvas: {fileID: 1974502003162573643}
+  Destination_FX: {fileID: 1962406821623320, guid: 7d5fbd835b0710442b596746582004eb, type: 3}
+  ReducingMoveFX: {fileID: 1002530091286178, guid: 2cfd9cf3b1dc4ad489f9d2a7574d2463, type: 3}
   rate: 0
-  Cards: []
   CanMove: 0
+  IfUndead: 0
+  IsBeRevived: 0
+  Cards: []
 --- !u!1 &836680410539406871
 GameObject:
   m_ObjectHideFlags: 0
@@ -3226,6 +3230,18 @@ Transform:
   m_Father: {fileID: 834613227609154465}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2350976827950760212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1974502003162573643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9b7f697df1248d43adeea6084778b8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &519725311960565998
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3305,7 +3321,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1223967507198236885, guid: f58203315dc513b4db4d008303ac1f66, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1233316331178525030, guid: f58203315dc513b4db4d008303ac1f66, type: 3}
       propertyPath: m_Enabled
@@ -3441,13 +3457,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9096622389423153781, guid: f58203315dc513b4db4d008303ac1f66, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9096622389423153781, guid: f58203315dc513b4db4d008303ac1f66, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1233316331178525030, guid: f58203315dc513b4db4d008303ac1f66, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f58203315dc513b4db4d008303ac1f66, type: 3}
 --- !u!224 &5970870673919425767 stripped
 RectTransform:
@@ -3465,3 +3482,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1974502003162573643 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1223967507198236885, guid: f58203315dc513b4db4d008303ac1f66, type: 3}
+  m_PrefabInstance: {fileID: 836175203286823838}
+  m_PrefabAsset: {fileID: 0}
