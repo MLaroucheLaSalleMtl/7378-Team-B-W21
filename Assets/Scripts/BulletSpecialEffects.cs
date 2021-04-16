@@ -8,8 +8,7 @@ public class BulletSpecialEffects : MonoBehaviour
     {
         fire_special
     }
-    public int damage = 50;
-    public float continuesDamage = 10;
+    public float damage;
 
     public SpecialType specialType;
     private Enemy enemy;
@@ -17,7 +16,7 @@ public class BulletSpecialEffects : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Destroy(this.gameObject, 3f);
     }
 
     // Update is called once per frame
@@ -25,14 +24,24 @@ public class BulletSpecialEffects : MonoBehaviour
     {
         
     }
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "enemy")
         {
+            Enemy enemy = other.GetComponent<Enemy>();
             if(specialType == SpecialType.fire_special)
             {
-                other.GetComponent<Enemy>().TakeContinuesDamage(damage, continuesDamage);
+                if(enemy != null||enemy.tag!="Dead")
+                {
+
+                    enemy.TakeDamage(damage);
+                    
+                    
+                }
+                
             }
         }
     }
+    
+    
 }

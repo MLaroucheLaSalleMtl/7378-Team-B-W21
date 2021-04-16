@@ -9540,7 +9540,7 @@ GameObject:
   - component: {fileID: 5039945131874831414}
   - component: {fileID: -8709298635836585235}
   - component: {fileID: 6811611088367549781}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: FireballMissileFireUpGrade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14378,7 +14378,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 14b16ff40093aba47bc467e148746cab, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
-  m_Pitch: 1.3
+  m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -14386,9 +14386,9 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 50
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -14421,7 +14421,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -14503,14 +14503,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 2
-  damage: 50
-  continuesDamage: 10
+  damage: 30
+  continuesDamage: 7
   speed: 20
   explosionEffectPrefab: {fileID: 100000, guid: fabff3cbe4a4be24a90f7b23e155e025, type: 3}
   FireImpact_FX: {fileID: 4091232252398538715, guid: 81b58e6d28ee1414b9171ca0489ec86c, type: 3}
   upGradeBulletEffectPrefab: {fileID: 1023936240820676, guid: bd57b2508891be341923af59d56b00de, type: 3}
   ReduceMove_FX: {fileID: 0}
   ReduceMove_Area: {fileID: 0}
+  ThunderLightingFX: {fileID: 0}
+  StopMoveTime: 0
+  ProbabilityPercentForThunder: 0
 --- !u!1 &166048
 GameObject:
   m_ObjectHideFlags: 0

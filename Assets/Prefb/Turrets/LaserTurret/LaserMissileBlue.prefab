@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -7660833643628550938}
   - component: {fileID: 3133073595725299049}
   - component: {fileID: 1142092861318049221}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: LaserMissileBlue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4761,9 +4761,9 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 50
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -4796,7 +4796,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -4878,14 +4878,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  damage: 50
-  continuesDamage: 10
-  speed: 20
+  damage: 35
+  continuesDamage: 0
+  speed: 30
   explosionEffectPrefab: {fileID: 1541938528893304995, guid: 63670d72326c5c64eaf3564e713395f4, type: 3}
   FireImpact_FX: {fileID: 1142420042466600, guid: 14a8239457fa29d4f9ae6ae54c689cc2, type: 3}
   upGradeBulletEffectPrefab: {fileID: 0}
   ReduceMove_FX: {fileID: 0}
   ReduceMove_Area: {fileID: 0}
+  ThunderLightingFX: {fileID: 0}
+  StopMoveTime: 0
+  ProbabilityPercentForThunder: 0
 --- !u!1 &112944
 GameObject:
   m_ObjectHideFlags: 0

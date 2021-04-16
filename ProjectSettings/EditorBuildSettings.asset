@@ -12,14 +12,13 @@ EditorBuildSettings:
     path: Assets/Scenes/Level1.unity
     guid: 3ab6d5cec4141fa4dab5df704c33cc4f
   - enabled: 1
-    path: Assets/Scenes/Hongfei.unity
+    path: Assets/Scenes/Level2.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/Scenes/Level 3.unity
-    guid: 51d1f94cbde4cdc44a4dfc91a72ae421
+    path: Assets/Scenes/Level 3(Night).unity
+    guid: 003c167a82235df4d8ed6df8d78a0344
   - enabled: 1
     path: Assets/Scenes/GameEnd.unity
     guid: f644a332d0e6edd45b7d0399727e21c8
   m_configObjects:
-    com.unity.input.settings: {fileID: 11400000, guid: 6aa68cd8d7225f944b7117379fded8eb,
-      type: 2}
+    com.unity.input.settings: {fileID: 11400000, guid: 6aa68cd8d7225f944b7117379fded8eb, type: 2}

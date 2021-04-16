@@ -14,7 +14,6 @@ public class LevelManager : MonoBehaviour
     public static LevelManager Instance;
     private EnemySpawner enemySpawner;
     public GameObject IngameUI;
-    [SerializeField] private int sceneIndex;
 
 
 
@@ -35,6 +34,10 @@ public class LevelManager : MonoBehaviour
     public float Basement_HP1 { get => Basement_HP; set => Basement_HP = value; }
     public float Basement_MaxHP1 { get => Basement_MaxHP; set => Basement_MaxHP = value; }
 
+    void Start()
+    {
+        
+    }
     public void Awake()
     {
         Instance = this;
@@ -79,27 +82,33 @@ public class LevelManager : MonoBehaviour
     {
         enemySpawner.Stop();
         gameOverPannel.SetActive(true);
+        Time.timeScale = 0;
         endMessage.text = "Failed!";
     }
 
     public void BtmRetry()
     {
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Pause.gameObject.SetActive(false);
+        AudioListener.volume = 1;
     }
-    public void BtmNextGame()
-    {
-        sceneIndex++;
-        SceneManager.LoadScene(sceneIndex);
-    }
+    //public void BtmNextGame()
+    //{
+    //    sceneIndex++;
+    //    SceneManager.LoadScene(sceneIndex);
+    //}
 
     public void BtmMenu()
     {
         SceneManager.LoadScene(0);
     }
+
     public void SetQuality (int qualityIndex)
     {
         QualitySettings.SetQualityLevel(qualityIndex);
     }
+
     public void Backtogame()
     {
         Time.timeScale = 1;
@@ -147,4 +156,19 @@ public class LevelManager : MonoBehaviour
             Fail();
         }
     }
+    //IEnumerator LoadScene(string sceneName)
+    //{
+    //    yield return null;
+    //    AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(sceneName);
+    //    asyncOperation.allowSceneActivation = false;
+    //    while (!asyncOperation.isDone)
+    //    {
+    //        float progress = Mathf.Clamp01(asyncOperation.progress / 0.9f);
+    //        loadingSlider.value = progress;
+    //        asyncOperation.allowSceneActivation = true;
+            
+          
+    //    }
+    //    yield return null;
+    //}
 }

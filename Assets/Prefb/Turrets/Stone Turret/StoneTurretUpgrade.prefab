@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 4192350554861216852}
   - component: {fileID: 1343125370836553990}
   - component: {fileID: 1897603434584648773}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: StoneTurretUpgrade
   m_TagString: Turrent
   m_Icon: {fileID: 0}
@@ -112,14 +112,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1edeace95f776f047a9843a4745fb502, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 10
+  hp: 150
   destroySelf_FX: {fileID: 5851802207990890909, guid: e0d1021b57a057042b72ca6015809ee1, type: 3}
   attackRate: 1
   bulletPerfab: {fileID: 3358453675455646607, guid: 0f026c68ccd405140a1fc478f69b3b4f, type: 3}
   firePosition: {fileID: 1012441971}
   head: {fileID: 657754486}
   useLaser: 0
-  damageRate: 70
+  UseThunder: 0
+  damageRate: 100
   laserRanderer: {fileID: 0}
   laserEffect: {fileID: 0}
   turretType: 0
@@ -137,7 +138,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 14
   m_CollisionDetection: 0
 --- !u!135 &1343125370836553990
 SphereCollider:
@@ -161,7 +162,7 @@ AudioSource:
   m_GameObject: {fileID: 7723193752889892283}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 805a4224ab2f6ec4b8621b03bdcfdcba, type: 2}
+  OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: c248e6ee74b9c044085909588a48f839, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -173,7 +174,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 50
+  MaxDistance: 30
   Pan2D: 0
   rolloffMode: 1
   BypassEffects: 0

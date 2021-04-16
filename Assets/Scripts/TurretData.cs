@@ -17,6 +17,8 @@ public enum TurretType
     LaserTurretUpgrade,
     FireBall_Turret,
     SnowBall_Turret,
-    StandardTurret
+    StandardTurret,
+    ThunderTurretUpgrade,
+    ThunderTurret
 }
 

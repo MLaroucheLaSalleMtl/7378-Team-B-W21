@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 3525030827728017877}
   - component: {fileID: 3208892820450248813}
   - component: {fileID: 5039014379513633308}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: SnowBall_Turret Upgrade
   m_TagString: Turrent
   m_Icon: {fileID: 0}
@@ -112,13 +112,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1edeace95f776f047a9843a4745fb502, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 10
+  hp: 150
   destroySelf_FX: {fileID: 5851802207990890909, guid: e0d1021b57a057042b72ca6015809ee1, type: 3}
   attackRate: 5
-  bulletPerfab: {fileID: 3358453675455646607, guid: 1142696086c622244bb3366f8e2eb9fc, type: 3}
+  bulletPerfab: {fileID: 1720240626168205020, guid: fd1aa97957b240c479dbd2978fbc8dbe, type: 3}
   firePosition: {fileID: 2051911711287614014}
   head: {fileID: 2051911710496740657}
   useLaser: 0
+  UseThunder: 0
   damageRate: 1000
   laserRanderer: {fileID: 0}
   laserEffect: {fileID: 0}
@@ -145,8 +146,8 @@ AudioSource:
   m_GameObject: {fileID: 5582679608395647491}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 805a4224ab2f6ec4b8621b03bdcfdcba, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 955b1e09039d6a84091d75b0b93b9e8f, type: 3}
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 4e83b8e7640012d44908cdead4dee318, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -157,7 +158,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 50
+  MaxDistance: 30
   Pan2D: 0
   rolloffMode: 1
   BypassEffects: 0

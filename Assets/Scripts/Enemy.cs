@@ -6,49 +6,46 @@ using UnityEngine.AI;
 
 public class Enemy : Enemy_property
 {
+    //Hongfei Liu
     private float halfSpeed;
     public GameObject explosionEffect;
+    //Shiyu Lyu
     public Slider hpSlider;
     public Slider EnergySlider;
     [SerializeField] private GameObject SliderCanvas;
 
-
+    //Hongfei Liu
     private bool CanTakenFirstDamage;//for continue damage to make sure take one damage and take a few times continue damage.
     private float ContinueDamage_Timer;  //how many seconds you want to run the ContinueDamage
     private float Max_Continuedamage_timer;
     private bool IsFinish_ContinueDamage_Timer;
+
+    //Peixin Li
+    private bool CantKill;
+    [SerializeField] private AudioSource ThunderAudio;
     private bool Find_Portal;
     private Transform Portal_Position;
     [SerializeField] private GameObject Destination_FX;
-
-
     [SerializeField] private GameObject ReducingMoveFX;
-
-
+    [Header("Revived")]
+    private bool IfArriveFirstDes;
     private Get_PortalTarget Get_Portal;
     private bool IsarrivePortal;
-
     public int rate;
-    bool onetimes_forCards;
-
-
-    //By PeiXin
     private NavMeshAgent Agent;
     Vector3 Enemy_Velocity;
     Animator Enemy_Anim;
-
     Enemy_property Enemy_prop;
     bool IsLose;
     bool IsDead;
     bool IsFinishDead;
 
-    //wavepoints
+    //Shiyu Lyu
+    bool onetimes_forCards;
 
-
-
+    //Peixin Li
     //Enemy State
     private bool IsReducing;
-
     private Transform[] positions;
     private int Point_Index;
     private GameObject[] point_gameobject;
@@ -63,6 +60,9 @@ public class Enemy : Enemy_property
     [SerializeField] private bool IfUndead;
 
     [SerializeField] private bool IsBeRevived;
+
+    //Enemy Status
+    private bool InBurning;
 
     public bool IfFinishSubPaths1 { get => IfFinishSubPaths; set => IfFinishSubPaths = value; }
     public bool CanMove1 { get => CanMove; set => CanMove = value; }
@@ -79,28 +79,47 @@ public class Enemy : Enemy_property
     public bool IsDead1 { get => IsDead; set => IsDead = value; }
     public Vector3 Current_Destination1 { get => Current_Destination; set => Current_Destination = value; }
     public bool IsBeRevived1 { get => IsBeRevived; set => IsBeRevived = value; }
+    public bool InBurning1 { get => InBurning; set => InBurning = value; }
+    public bool CantKill1 { get => CantKill; set => CantKill = value; }
 
 
-    //Card
+    //Shiyu Lyu
     [SerializeField] private GameObject[] Cards;
+    //-------------------------------------
 
-
-    //Energy
+    //Peixin Li
     private bool IfResetEnergy;
-
-    //bow
     private bool Start_Bow;
     private bool Finsh_Bow;
-
-    
-    // Start is called before the first frame update
+    //-------------------------------------
+    private void Awake()
+    {
+        if(IsBeRevived1)
+        { CantKill1 = true; }
+        
+        
+    }
     void Start()
     {
+        ThunderAudio = GetComponent<AudioSource>();
+        //Peixin Li
+        InBurning1 = false;
+        IfArriveFirstDes = false;
+        if(!IsBeRevived1)
+        {
+            IsarrivePortal = false;
+            InSubPath1 = false;
+            Point_Index1 = 0;
+            IfFinishSubPaths1 = false;
+        }
         IsReducing1 = false;
         IsFinishDead = false;
-        IsarrivePortal = false;
+        
         positions = WavePoints.position;
-        Max_hp = Hp;
+        
+            Max_hp = Hp;
+        
+        
         halfSpeed = Move_speed * 0.5f;
         CanTakenFirstDamage = true;
         //PeiXin
@@ -115,15 +134,20 @@ public class Enemy : Enemy_property
 
         Set_NavSpeed();
         IsLose = false;
-        Set_Property();
+        Set_Level();
         IsDead1 = false;
-        Point_Index1 = 0;
+        
 
         point_gameobject = WavePoints.points_gameobject;
         MainPath = new SetsubpathBySubPath[point_gameobject.Length];
+        if(IsBeRevived1)
+        {
+            Invoke("ResetCantKill", 3f);
+        }
+        
 
-        InSubPath1 = false;
-
+        
+      
 
         //Bomber
 
@@ -133,10 +157,14 @@ public class Enemy : Enemy_property
 
         }
 
-        IfFinishSubPaths1 = false;
+      
 
         Max_Energy1 = 100f;
         Energy1 = 0f;
+        if (EnemyType == enemy_type.SkeletonArcher || EnemyType == enemy_type.GhostShooter)
+        {
+            Energy1 = 90f;
+        }
 
         //bow
         Start_Bow1 = false;
@@ -145,6 +173,9 @@ public class Enemy : Enemy_property
 
 
     }
+    //-------------------------------------
+
+    //Hongfei Liu
     private void SetSlider()
     {
         if(!IsDead1)
@@ -158,8 +189,9 @@ public class Enemy : Enemy_property
         }
         
     }
+    //-------------------------------------
 
-    // Update is called once per frame
+    // Peixin Li
     void Update()
     {
         SetSlider();
@@ -173,7 +205,7 @@ public class Enemy : Enemy_property
         }
         if (!Find_Portal1)
         {
-
+            
             if (CanMove1)
             {
 
@@ -184,7 +216,6 @@ public class Enemy : Enemy_property
         {
             if (Portal_Position1 != null)
             {
-                Debug.Log("Go");
                 if (CanMove1)
                 {
                     Move(Portal_Position1);
@@ -226,6 +257,7 @@ public class Enemy : Enemy_property
     }
     public void GetMovingValueFromOthers(Enemy enemy)
     {
+        
         this.InSubPath1 = enemy.InSubPath1;
         this.IfFinishSubPaths1 = enemy.IfFinishSubPaths1;
         this.IfarrivePoint1 = enemy.IfarrivePoint1;
@@ -234,19 +266,31 @@ public class Enemy : Enemy_property
         this.Portal_Position1 = enemy.Portal_Position1;
 
         this.Current_Destination1 = enemy.Current_Destination1;
-        if(this.Current_Destination1!=null)
+
+        if (Current_Destination1 != null)
         {
             
-            this.Agent1.destination = this.Current_Destination1;
-        }
+            Invoke("SetCurrentDestination", 1f);
 
-       
+
+        }
+        EnemySpawner.EnemyCount++;
         
+
+
+
+
+
+
         Debug.Log(Point_Index1);
         
         //this.Agent1.destination = enemy.Agent1.destination;
         
         
+    }
+    private void SetCurrentDestination()
+    {
+        Agent1.destination = Current_Destination1;
     }
     private void Set_NavSpeed()
     {
@@ -274,21 +318,29 @@ public class Enemy : Enemy_property
     //}
     public void StopMove()
     {
-        CanMove1 = false;
-        Current_Destination1 = Agent1.destination;
-        Agent1.ResetPath();
+        if(CanMove1)
+        {
+            CanMove1 = false;
+            Current_Destination1 = Agent1.destination;
+            Agent1.ResetPath();
+        }
+       
     }
     public void RestartMove()
     {
-        CanMove1 = true;
-        if(Current_Destination1!=null)
+        if(!IsDead1)
         {
-            Agent1.destination = Current_Destination1;
-        }
-        if(Current_Destination1==null)
-        {
+            CanMove1 = true;
+            if (Current_Destination1 != null)
+            {
+                Agent1.destination = Current_Destination1;
+            }
+            if (Current_Destination1 == null)
+            {
 
+            }
         }
+        
        
 
     }
@@ -303,7 +355,7 @@ public class Enemy : Enemy_property
     void Move()
     {
 
-        if(!IsBeRevived1)
+        if(!IsBeRevived1||IfArriveFirstDes)
         {
             if (!InSubPath1)
             {
@@ -314,9 +366,13 @@ public class Enemy : Enemy_property
 
             }
         }
-       if(IsBeRevived1)
+       if(IsBeRevived1&&!IfArriveFirstDes)
         {
             Agent1.destination = Current_Destination1;
+            if(Vector3.Distance(transform.position,Current_Destination1)<=2f)
+            {
+                IfArriveFirstDes = true;
+            }
         }
         if (IfFinishSubPaths1)
         {
@@ -368,11 +424,11 @@ public class Enemy : Enemy_property
     {
 
         //LevelManager.Instance.Fail();
-        GameObject.Destroy(this.gameObject);
+        GameObject.Destroy(this.gameObject); 
+
     }
     private void ArrivePortal()
     {
-        Debug.Log("Reach");
         Vector3 Destination_Position;
         Destination_Position = transform.position;
         Destination_Position.y += 2;
@@ -380,7 +436,10 @@ public class Enemy : Enemy_property
         LevelManager.Instance.Basement_HP1 -= this.basement_damage;
         Debug.Log("Reduce Basement HP " + this.basement_damage);
 
-
+        
+            EnemySpawner.EnemyCount--;
+        
+        
         GameObject.Destroy(Portal_FX, 2f);
         GameObject.Destroy(this.gameObject);
     }
@@ -389,15 +448,25 @@ public class Enemy : Enemy_property
     {
         //EnemySpawner.EnemyCount--;
     }
+    //-------------------------------------
 
+    //Hongfei Liu
     public void TakeDamage(float damage)
     {
-        if (Hp <= 0) return;
+        if(this.tag!="Dead")
+        {
+            if (Hp <= 0||CantKill1) return;
 
-        Hp = Hp - DefenceDamage(damage);
+            Hp = Hp - DefenceDamage(damage);
 
-        hpSlider.value = (float)Hp / Max_hp;
+            hpSlider.value = (float)Hp / Max_hp;
+        }
         
+        
+    }
+    private void ResetCantKill()
+    {
+        CantKill1 = false;
     }
     public float DefenceDamage(float damage)
     {
@@ -413,29 +482,16 @@ public class Enemy : Enemy_property
     }
     public void TakenDamagePerSeconds(float damage)
     {
-        if (Hp <= 0) return;
+        if (Hp <= 0||this.tag=="dead") return;
         Hp -= DefenceDamage(damage) *Time.deltaTime;
 
         hpSlider.value = (float)Hp / Max_hp;
         
-        
     }
-    private void ReSetMoveSpeed()
-    {
-        Agent1.speed = Move_speed;
-        IsReducing1 = false;
-    }
-    public void ResetReStartMove(float ResetTime)
-    {
-        Invoke("RestartMove", ResetTime);
-    }
-
-
-
-
     public void TakeContinuesDamage(float First_damage, float Continues_damage)
     {
-        if (CanTakenFirstDamage && ContinueDamage_Timer > 0f)
+        if (this.tag == "Dead") return;
+            if (CanTakenFirstDamage && ContinueDamage_Timer > 0f)
         {
             TakeDamage(First_damage);
             CanTakenFirstDamage = false;
@@ -458,7 +514,22 @@ public class Enemy : Enemy_property
             }
         }
 
+
     }
+    //-------------------------------------
+
+
+    //Peixin Li
+    public void ReSetMoveSpeed()
+    {
+        Agent1.speed = Move_speed;
+        IsReducing1 = false;
+    }
+    public void ResetReStartMove(float ResetTime)
+    {
+        Invoke("RestartMove", ResetTime);
+    }
+   
     private void OnTriggerEnter(Collider other)
     {
         //if (other.tag == "Turrent")
@@ -483,9 +554,7 @@ public class Enemy : Enemy_property
         }
 
     }
-
-
-
+    
     private void OnTriggerExit(Collider other)
     {
         if (other.tag == "WayPoints" && !InSubPath1)
@@ -493,46 +562,63 @@ public class Enemy : Enemy_property
             IfarrivePoint1 = false;
         }
     }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Home")
-        {
-            Destroy(collision.gameObject);
-        }
-    }
-
-
+    
     public void Reset_ContinueDamage_Timer()
     {
         ContinueDamage_Timer = Max_Continuedamage_timer;
         CanTakenFirstDamage = true;
     }
+    //-------------------------------------
 
+    //Hongfei Liu
     public void TakeSnowBallDamage(float damage)
     {
-        if (Hp <= 0) return;
+
+        if (Hp <= 0||this.tag=="Dead") return;
         TakeDamage(damage);
-        Agent1.speed = halfSpeed;
-        GameObject ReducingFX = Instantiate(ReducingMoveFX, transform.position, Quaternion.identity);
-        ReducingFX.transform.parent = transform;
-        Destroy(ReducingFX, 5f);
-        Invoke("ReSetMoveSpeed", 5f);
+        if(!IsReducing1)
+        {
+            Agent1.speed = halfSpeed;
+            GameObject ReducingFX = Instantiate(ReducingMoveFX, transform.position, Quaternion.identity);
+            ReducingFX.transform.parent = transform;
+            Destroy(ReducingFX, 5f);
+            Invoke("ReSetMoveSpeed", 5f);
+            IsReducing1 = true;
+        }
         
+    }
+    //-------------------------------------
+
+    // Peixin Li
+    public void TakeThunderDamage(float damage,float StopTime)
+    {
+        if(this.tag!="Dead")
+        {
+            TakeDamage(damage);
+            Energy1 = 0f;
+            StopMove();
+            ResetReStartMove(StopTime);
+            ThunderAudio.Play();
+        }
         
     }
     public void Die()
     {
         //Drop();
         StopMove();
-        BuildManager.money += 10;
+        BuildManager.money += Cost1;
         Vector3 explosionEffectPosition = transform.position;
         explosionEffectPosition.y += 2f;
+        //Current_Destination1 = Agent1.destination;
         GameObject effect = GameObject.Instantiate(explosionEffect, explosionEffectPosition, transform.rotation);
         Destroy(effect, 1);
+        Drop();
         if (!IfUndead)
         {
            
             Destroy(this.gameObject, 2f);
+            
+           
         }
         if(IfUndead)
         {
@@ -540,33 +626,16 @@ public class Enemy : Enemy_property
             
             SliderCanvas.SetActive(false);
             tag = "Dead";
+            Destroy(this.gameObject, 30f);
         }
+
+
         EnemySpawner.EnemyCount--;
 
-
     }
+    //-------------------------------------
 
-
-    //Card systems  ||↓ ↓ ↓ ↓ ↓ ↓ ↓ 
-
-    //private bool Drop_rate()
-    //{
-
-    //    rate = Random.Range(0, 101);
-    //    //if (rate <= 5)
-    //    //{
-    //    //    return true;
-    //    //}
-    //    return rate <= 5;
-
-    //    //int RandomNumber = Random.Range(0, 20);
-    //    //if (RandomNumber == 1)
-    //    //{
-
-    //    //}
-    //}
-
-
+    //Shiyu Lyu
     private int Get_Random()
     {
         int Index;
@@ -579,7 +648,7 @@ public class Enemy : Enemy_property
         int index;
         index = Get_Random();
         Vector3 cardposition = new Vector3(transform.position.x, transform.position.y + 2, transform.position.z);
-        //Instantiate(Cards[index], cardposition, Quaternion.identity);
+        Instantiate(Cards[index], cardposition, Quaternion.identity);
 
     }
 
@@ -587,7 +656,7 @@ public class Enemy : Enemy_property
     {
 
         rate = Random.Range(0, 101);
-        if (rate <= 100)
+        if (rate <= 5)
         {
             create_Card();
         }
@@ -607,6 +676,10 @@ public class Enemy : Enemy_property
     //    }
     //}
 
+
+    //-------------------------------------
+
+    //Peixin Li
     //animation events
     public void Finish_BowShoot()
     {

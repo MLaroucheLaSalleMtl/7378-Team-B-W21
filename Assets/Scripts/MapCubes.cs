@@ -13,16 +13,19 @@ public class MapCubes : MonoBehaviour
     private Renderer renderer;
     [HideInInspector]
     public bool isUpGraded = false;
+    [SerializeField]private AudioSource audiosource;
 
     void Start()
     {
         renderer = GetComponent<Renderer>();
+        audiosource = GetComponent<AudioSource>();
     }
 
     public void BuildTurret(TurretData turretData)
     {
         this.turretData = turretData;
         isUpGraded = false;
+        audiosource.Play();
         turretGo = GameObject.Instantiate(turretData.turretPerfab, transform.position, Quaternion.identity);
         GameObject effect = GameObject.Instantiate(buildeffect, transform.position, Quaternion.identity);
         Destroy(effect, 1.5f);

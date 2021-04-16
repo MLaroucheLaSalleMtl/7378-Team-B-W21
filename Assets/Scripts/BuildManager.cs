@@ -7,10 +7,11 @@ using UnityEngine.UI;
 public class BuildManager : MonoBehaviour
 {
     public TurretData laserTurretData;
-    public TurretData missileTurretData;
+    public TurretData thurnderTurretDate;
     public TurretData standardTurretData;
     public TurretData fireBallTurretData;
     public TurretData SnowBallTurretData;
+    
 
 
     [SerializeField] private Mask RaycastIgnoreMask;
@@ -28,6 +29,7 @@ public class BuildManager : MonoBehaviour
     private float DestroyMoney;
     public Animator moneyAnim;
     public static float money = 0;
+    [SerializeField] private float Default_money;
     public GameObject upgradeCanvas;
     public Button buttonUpgrade;
     private Set_Value PowerUp;
@@ -48,10 +50,11 @@ public class BuildManager : MonoBehaviour
 
     private void Start()
     {
-        money = 500;
+        money = Default_money;
         moneyText.text = "$" + money;
         //MyCamera = GameObject.FindWithTag("Camera").transform;
         //click = new click();
+       
 
        
     }
@@ -59,8 +62,9 @@ public class BuildManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        moneyText.text = "$" + money;
-
+        
+        moneyText.text = "$" + Mathf.Ceil(money);
+        money += Time.deltaTime*2;
         //Check mouse
         if (Input.GetMouseButtonDown(0))
         {
@@ -138,16 +142,16 @@ public class BuildManager : MonoBehaviour
 
     }
 
-    public void OnMissileSelected(bool isOn)
+    public void OnThurnderSelected(bool isOn)
     {
         if (isOn)
         {
-            canBuild = true;
-            selectdTurretData = missileTurretData;
+            //canBuild = true;
+            selectdTurretData = thurnderTurretDate;
         }
         else
         {
-            canBuild = false;
+            //canBuild = false;
             selectdTurretData = null;
         }
 
@@ -200,13 +204,6 @@ public class BuildManager : MonoBehaviour
         upgradeCanvas.transform.position = pos;
         pos.y += 5;
         buttonUpgrade.interactable = !isDisableUpgrade;
-    }
-    void LookAtCamera()
-    {
-        if(upgradeCanvas.activeSelf)
-        {
-            upgradeCanvas.transform.LookAt(MyCamera);
-        }
     }
 
     void HideUpgradeUI()

@@ -6,41 +6,30 @@ using UnityEngine.SceneManagement;
 
 public class Gamemanager : MonoBehaviour
 {
-    //public Transform MainMenu;
-    //public Transform Summary;
-    //public Transform WinSummary;
+    public GameObject loadingScreen;
+    private AsyncOperation async; 
+    [SerializeField] private Slider progressbar;
+    public int nextSceneIndex;
+    public int thisSceneIndex;
+    
+
 
     bool ISPause;
     bool isStop = true;
     private bool InGame;
     public Transform Pause;
 
-    public float GameTimer;
-    public int totalscore;
-
-    public bool gamestarted = false;
     // Start is called before the first frame update
     void Start()
     {
-        //CallMainManu();
+        progressbar.value = 0;
     }
 
-    void CallMainManu()
-    {
-        InGame = false;
-        Time.timeScale = 0;
-        //MainMenu.gameObject.SetActive(true);
-        gamestarted = false;
-    }
+
 
     // Update is called once per frame
     void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.Escape) && !ISPause)
-        //    Pause();
-
-        //else if (Input.GetKeyDown(KeyCode.Escape) && ISPause)
-        //    UNpause();
 
         if (isStop == true)
         {
@@ -66,62 +55,33 @@ public class Gamemanager : MonoBehaviour
         }
 
     }
-
-    //OpenSummary and OpenWinSummary
-    //void OpenSummary()
-    //{
-    //    Time.timeScale = 0;
-    //    InGame = false;
-    //    Summary.gameObject.SetActive(true);
-
-    //    Text txtpoint = Summary.Find("Score").GetComponent<Text>();
-    //    txtpoint.text = "Score : " + totalscore;
-
-    //    Text txtUserTime = Summary.Find("TimeLeft").GetComponent<Text>();
-    //    txtUserTime.text = "Time Left : " + GameTimer;
-    //}
-
-    //void OpenWinSummary()
-    //{
-    //    Time.timeScale = 0;
-    //    InGame = false;
-    //    WinSummary.gameObject.SetActive(true);
-
-    //    Text txtpoint = WinSummary.Find("ScoreWin").GetComponent<Text>();
-    //    txtpoint.text = "Score : " + totalscore;
-
-    //    Text txtUserTime = WinSummary.Find("TimeLeftWin").GetComponent<Text>();
-    //    txtUserTime.text = "Time Left : " + GameTimer;
-
-    //}
-
-
-    public void StartGame()
+    public IEnumerator LoadLevel(int sceneIndex)
     {
-        SceneManager.LoadScene(sceneName:"Level1");
-        
-        
+        AsyncOperation operation = SceneManager.LoadSceneAsync(sceneIndex);//load target scene
+        loadingScreen.SetActive(true);
+        while(!operation.isDone)
+        {
+            float progress = Mathf.Clamp01(operation.progress / 0.9f);
+            progressbar.value = progress;
+            yield return null;
+        }
     }
 
 
-    //public void Pause()
-    //{
-    //    ISPause = true;
-    //    MainMenu.gameObject.SetActive(true);
-    //    Time.timeScale = 0f;
-    //}
 
-    //public void UNpause()
-    //{
-    //    ISPause = false;
-    //    MainMenu.gameObject.SetActive(false);
-    //    Time.timeScale = 1f;
-    //}
+    public void NextScene()
+    {
+        StartCoroutine(LoadLevel(nextSceneIndex));
+        AudioListener.volume = 1;
 
-    //public void Click_ExitGame()
-    //{
-    //    Application.Quit();
-    //}
+    }
+    public void RetryScene()
+    {
+        StartCoroutine(LoadLevel(thisSceneIndex));
+        AudioListener.volume = 1;
+    }
+
+
 
     public void Quitgame()
     {
@@ -131,37 +91,8 @@ public class Gamemanager : MonoBehaviour
 #else
      Application.Quit();
 #endif
-
-
-
-     
-
+        
      }
 
-    //public void Click_NextGame()
-    //{
-
-
-    //    Summary.gameObject.SetActive(false);
-
-    //    SceneManager.LoadScene(0);
-
-
-    //}
-
-    //public void Click_WinNextGame()
-    //{
-    //    WinSummary.gameObject.SetActive(false);
-    //    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-
-
-    //}
-    //public void Click_WinMenu()
-    //{
-    //    WinSummary.gameObject.SetActive(false);
-    //    MainMenu.gameObject.SetActive(true);
-    //    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-
-    //}
 
 }

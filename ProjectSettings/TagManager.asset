@@ -31,9 +31,9 @@ TagManager:
   - triggerRange
   - Portal
   - Panel
-  - 
-  - 
-  - 
+  - Enemy
+  - Turret
+  - EnemyTrigger
   - 
   - 
   - 

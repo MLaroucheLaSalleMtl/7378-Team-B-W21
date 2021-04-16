@@ -13,9 +13,9 @@ public class EnemySpawner : MonoBehaviour
     public Wave[] waves;
     public Transform StartPoint;
     public float waveRate;
-    public Text Text_AllWaves;
-    public Text Text_CurrentWave;
-    public int waveNumber;
+    //public Text Text_AllWaves;
+    //public Text Text_CurrentWave;
+    private int waveNumber;
     private Coroutine coroutine;
 
     [SerializeField] private GameObject Instantiate_EnmeyFX;
@@ -29,18 +29,51 @@ public class EnemySpawner : MonoBehaviour
 
     private bool StartCountTimer;
 
+    private bool StartWave;
+    private bool SetWinPanel;
+
+    //time count down
+    public float timeRemaining = 10;
+    public bool timerIsRunning = false;
+    public Text timeText;
+    private bool canSpawnEnemy;
+    //
+    private float startTime;
+    private float resetStartTime;
+
+
+
+    void DisplayTime(float timeToDisplay)
+    {
+        timeToDisplay += 1;
+
+        float minutes = Mathf.FloorToInt(timeToDisplay / 60);
+        float seconds = Mathf.FloorToInt(timeToDisplay % 60);
+
+        timeText.text = string.Format("Enemy Spawn in: " + "{0:00}:{1:00}", minutes, seconds);
+    }
+
+
+
     void Start()
     {
+        startTime = 3f;
+        canSpawnEnemy = false;
         coroutine = StartCoroutine(SpawnEnemy());
-        Text_AllWaves.text = waves.Length.ToString();
+        //Text_AllWaves.text = waves.Length.ToString();
         waveNumber = 1;
         IfCountWRT = true;
         WaveRateTimer = 0f;
 
         StartCountTimer = true;
         TimeCounter.fillAmount = 0;
-
-
+        StartWave = true;
+        SetWinPanel = false;
+        
+        //time count down
+        timerIsRunning = true;
+        //
+        resetStartTime = startTime;
     }
 
     public void Stop()
@@ -51,23 +84,52 @@ public class EnemySpawner : MonoBehaviour
 
     public void Update()
     {
-        Debug.Log("EnemyCount = " + EnemyCount);
-        Debug.Log("WaveSum+EnemyCount" + CountSelectedWaveNum(waveNumber - 1) + " , " + EnemyCount2);
+        Debug.Log("WaveNumber" + waveNumber);
+        Debug.Log("EnemyCount" + EnemyCount);
+        if (waveNumber == waves.Length && EnemyCount == 0)
+        {
+            Debug.Log("yes");
+            waveRate = 1;
+            Debug.Log(waveRate);
+        }
+        //if (waveNumber == waves.Length + 1)
+        //{
+        //    if (EnemyCount == 0 && StartWave == false)
+        //    {
+        //        if (!StartWave)
+        //        {
+        //            StartWave = true;
+        //            if (IsLevel3 == false)
+        //            {
+        //                SpawnEnemy().MoveNext();
+        //            }
+        //            else if (IsLevel3 == true)
+        //            {
+        //                SceneManager.LoadScene("GameEnd");
+        //            }
+        //        }
+        //    }
+        //}
+
+        if (EnemyCount>0&&StartWave)
+        {
+            StartWave = false;
+        }
         IfInWaveRateTime();
 
-        Text_CurrentWave.text = waveNumber.ToString();
+        //Text_CurrentWave.text = waveNumber.ToString();
         if (waveNumber > waves.Length)
         {
             //Stop();
             waveNumber = waves.Length;
         }
+        TimeCount();
 
-
-
-        //if(SpawnEnemy().MoveNext())
-        //{
-        //    IfCountWRT = true;
-        //}
+        if(waveNumber == waves.Length)
+        {
+            CheckEnemyTimeCounter(); 
+        }
+        
 
 
     }
@@ -84,10 +146,6 @@ public class EnemySpawner : MonoBehaviour
                 CountWaveRateTimer();
                 TimeCounter.fillAmount = 1 - WaveRateTimer / waveRate;
             }
-
-
-
-
             if (IfCountWRT)
             {
                 ResetCountWaveRateTimer();
@@ -113,6 +171,7 @@ public class EnemySpawner : MonoBehaviour
         {
             IfCountWRT = true;
             WaveRateTimer = 0f;
+            
         }
 
 
@@ -135,12 +194,31 @@ public class EnemySpawner : MonoBehaviour
         return CountResult;
     }
 
+    public void TimeCount()
+    {
+        if (timerIsRunning)
+        {
+            if (timeRemaining > 0)
+            {
+                timeRemaining -= Time.deltaTime;
+                DisplayTime(timeRemaining);
+            }
+            else
+            {
+                timeRemaining = 0;
+                timeText.text = "";
+                timerIsRunning = false;
+                canSpawnEnemy = true;
+            }
+        }
+    }
+
     IEnumerator SpawnEnemy()
     {
+        yield return new WaitForSeconds(timeRemaining);
 
-
-        foreach (Wave wave in waves)
-        {
+         foreach (Wave wave in waves)
+         {
             EnemyCount2 = 0;
             for (int i = 0; i < wave.count.Length; i++)
             {
@@ -149,6 +227,7 @@ public class EnemySpawner : MonoBehaviour
 
                     GameObject.Instantiate(wave.enemyPrefb[i], StartPoint.position, Quaternion.identity);
                     EnemyCount++;
+
                     EnemyCount2++;
                     if (a != wave.count[i])
                         yield return new WaitForSeconds(wave.rate);
@@ -156,59 +235,59 @@ public class EnemySpawner : MonoBehaviour
 
 
             }
-
-            //for (int i = 0; i < wave.count; i++)
-            //{
-            //        GameObject.Instantiate(wave.enemyPrefb, StartPoint.position, Quaternion.identity);
-            //        EnemyCount++;
-            //        if (i != wave.count - 1)
-            //            yield return new WaitForSeconds(wave.rate);
-            //}
-            //for (int i = 0; i < wave.count2; i++)
-            //{
-            //    GameObject.Instantiate(wave.enemyPrefb2, StartPoint.position, Quaternion.identity);
-            //    EnemyCount++;
-            //    if (i != wave.count2 - 1)
-            //        yield return new WaitForSeconds(wave.rate);
-            //}
+                //while (EnemyCount > 0)
+                //{
+                //    yield return 0;
+                //}
 
 
+                yield return new WaitForSeconds(waveRate);
 
+                waveNumber += 1;
+                waveRate *= 0.8f;   
 
-
-            //while (EnemyCount > 0)
-            //{
-            //    yield return 0;
-            //}
-
-            yield return new WaitForSeconds(waveRate);
-
-            waveNumber += 1;
-            waveRate *= 0.8f;
-
-
-
-
-
-
-        }
-
+         }       
+       
 
         //still have enemy in game
         while (EnemyCount > 0)
         {
             yield return 0;
         }
-        if(!IsLevel3)
+
+    
+    }
+
+    public void CheckEnemyTimeCounter()
+    {
+        if(startTime>0)
         {
-            LevelManager.Instance.Win();
+            startTime -= Time.deltaTime;
         }
-        else if(IsLevel3)
+        if(startTime<=0)
         {
-            SceneManager.LoadScene("");
+            startTime = resetStartTime;
+            GameObject[] enemys = GameObject.FindGameObjectsWithTag("enemy");
+            if(enemys.Length == 0)
+            {
+                if (!IsLevel3)
+                {
+                    LevelManager.Instance.Win();
+                }
+                else if (IsLevel3)
+                {
+                    SceneManager.LoadScene("GameEnd");
+                }
+            }
         }
+
         
     }
+
+
+
+
+    
 }
 
 

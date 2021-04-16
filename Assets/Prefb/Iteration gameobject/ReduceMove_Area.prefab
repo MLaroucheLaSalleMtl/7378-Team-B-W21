@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3819755302195359469}
   - component: {fileID: -8129937977021069382}
   - component: {fileID: 3698079248163644038}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ReduceMove_Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62,6 +62,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Reduce_FX: {fileID: 1002530091286178, guid: 2cfd9cf3b1dc4ad489f9d2a7574d2463, type: 3}
+  IceBullet: {fileID: 8497781310925028260, guid: fd1aa97957b240c479dbd2978fbc8dbe, type: 3}
 --- !u!1001 &1369594025239989213
 PrefabInstance:
   m_ObjectHideFlags: 0

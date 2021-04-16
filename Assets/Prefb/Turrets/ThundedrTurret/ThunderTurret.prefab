@@ -75,9 +75,9 @@ GameObject:
   - component: {fileID: 3686416106888480807}
   - component: {fileID: 277352057847100326}
   - component: {fileID: 5993082465509355945}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ThunderTurret
-  m_TagString: Untagged
+  m_TagString: Turrent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -112,17 +112,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1edeace95f776f047a9843a4745fb502, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 10
+  hp: 100
   destroySelf_FX: {fileID: 5851802207990890909, guid: e0d1021b57a057042b72ca6015809ee1, type: 3}
-  attackRate: 1
-  bulletPerfab: {fileID: 3219950081901063690, guid: 284fe0fb7242b6d44b28a60170eaf3e9, type: 3}
+  attackRate: 3
+  bulletPerfab: {fileID: 163948, guid: 153ff601b9ac43240921bf65f009e220, type: 3}
   firePosition: {fileID: 3686416105478103541}
   head: {fileID: 3686416105759403770}
   useLaser: 0
+  UseThunder: 0
   damageRate: 50
   laserRanderer: {fileID: 0}
   laserEffect: {fileID: 0}
-  turretType: 0
+  turretType: 6
 --- !u!54 &3686416106888480807
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -137,7 +138,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 14
   m_CollisionDetection: 0
 --- !u!135 &277352057847100326
 SphereCollider:
@@ -161,16 +162,16 @@ AudioSource:
   m_GameObject: {fileID: 7073101918791496136}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 805a4224ab2f6ec4b8621b03bdcfdcba, type: 2}
+  OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 8b3848d6900879843a1ffd2a0ce93090, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
-  m_Pitch: 0.35
+  m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 10
+  Priority: 128
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 50

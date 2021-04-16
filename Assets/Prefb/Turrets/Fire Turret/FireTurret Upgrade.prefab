@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 6388352465403939890}
   - component: {fileID: 7518303730409306035}
   - component: {fileID: -1488415133121894694}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: FireTurret Upgrade
-  m_TagString: Untagged
+  m_TagString: Turrent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -51,16 +51,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1edeace95f776f047a9843a4745fb502, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 10
+  hp: 150
   destroySelf_FX: {fileID: 5851802207990890909, guid: e0d1021b57a057042b72ca6015809ee1, type: 3}
   attackRate: 1
   bulletPerfab: {fileID: 7861041180794633761, guid: cf53d2e9f653cbc4c9de09ca4ddbf380, type: 3}
   firePosition: {fileID: 6388352463727257056}
   head: {fileID: 6388352464577899247}
   useLaser: 0
+  UseThunder: 0
   damageRate: 70
   laserRanderer: {fileID: 0}
   laserEffect: {fileID: 0}
+  turretType: 2
 --- !u!54 &6388352465403939890
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -75,7 +77,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 14
   m_CollisionDetection: 0
 --- !u!135 &7518303730409306035
 SphereCollider:
@@ -99,8 +101,8 @@ AudioSource:
   m_GameObject: {fileID: 695682906806957533}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 805a4224ab2f6ec4b8621b03bdcfdcba, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 4a360f810c365d6469d6a21803022cdc, type: 3}
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 593a357a40e15ae42b6970f21c7aed40, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

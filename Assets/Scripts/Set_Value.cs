@@ -43,7 +43,7 @@ public class Set_Value : MonoBehaviour
     public void RedPowerUp()
     {
         enemy = FindObjectsOfType<Enemy>();
-        Debug.Log("laolaozai" + enemy.Length);
+        Debug.Log("PowerUp" + enemy.Length);
         if (Redbegin == false)
         {
             // if false .....
@@ -61,11 +61,11 @@ public class Set_Value : MonoBehaviour
         Debug.Log("PowerUp!!!");
         if (Cube_Black)
         {
-            BuildManager.money += 200;
+            BuildManager.money += 300;
         }
     }
 
-    public void YellowPowerUp()//防御塔攻速
+    public void YellowPowerUp()
     {
         Turret = FindObjectsOfType<Turret>();
         
@@ -82,7 +82,7 @@ public class Set_Value : MonoBehaviour
 
     }
 
-    public void PinkPowerUp()//消灭所有敌人
+    public void PinkPowerUp()
     {
         if (Cube_Pink)
         {
@@ -90,7 +90,7 @@ public class Set_Value : MonoBehaviour
             foreach (Enemy element in enemy)
             {
                 element.StopMove();
-                element.ResetReStartMove(3f);
+                element.ResetReStartMove(5f);
             }
 
         }

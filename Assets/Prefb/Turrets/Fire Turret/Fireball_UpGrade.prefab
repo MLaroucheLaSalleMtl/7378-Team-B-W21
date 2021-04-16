@@ -42,14 +42,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 2
-  damage: 50
-  continuesDamage: 10
+  damage: 70
+  continuesDamage: 5
   speed: 20
   explosionEffectPrefab: {fileID: 100000, guid: fabff3cbe4a4be24a90f7b23e155e025, type: 3}
   FireImpact_FX: {fileID: 4091232252398538715, guid: 81b58e6d28ee1414b9171ca0489ec86c, type: 3}
   upGradeBulletEffectPrefab: {fileID: 1023936240820676, guid: bd57b2508891be341923af59d56b00de, type: 3}
   ReduceMove_FX: {fileID: 0}
   ReduceMove_Area: {fileID: 0}
+  ThunderLightingFX: {fileID: 0}
+  StopMoveTime: 0
+  ProbabilityPercentForThunder: 0
 --- !u!114 &8607178278737530116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,6 +163,10 @@ PrefabInstance:
     - target: {fileID: 1415679859382806824, guid: d5467d0aae9b88944bda20a421c40e17, type: 3}
       propertyPath: m_Name
       value: Fireball_UpGrade
+      objectReference: {fileID: 0}
+    - target: {fileID: 1415679859382806824, guid: d5467d0aae9b88944bda20a421c40e17, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 1415679859382806824, guid: d5467d0aae9b88944bda20a421c40e17, type: 3}
       propertyPath: m_IsActive

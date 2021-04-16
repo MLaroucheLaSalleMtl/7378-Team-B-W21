@@ -118,6 +118,7 @@ MonoBehaviour:
   upGradeBulletEffectPrefab: {fileID: 0}
   ReduceMove_FX: {fileID: 1002530091286178, guid: 2cfd9cf3b1dc4ad489f9d2a7574d2463, type: 3}
   ReduceMove_Area: {fileID: 4628559275896526954, guid: b202dc72d04535541b01d998556e968a, type: 3}
+  LightingChain: {fileID: 0}
 --- !u!54 &2605647682864212838
 Rigidbody:
   m_ObjectHideFlags: 0

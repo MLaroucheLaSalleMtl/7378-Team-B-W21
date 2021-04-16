@@ -16,6 +16,7 @@ public class Enemy_property : MonoBehaviour
     [SerializeField] private float Basement_damage;
     [SerializeField] private float defence;
     [SerializeField] private bool IfUsingEnergy;
+    [SerializeField] private float Cost;
     private float Energy;
     private float Max_Energy;
     [SerializeField] private float EnergySpeed;
@@ -32,6 +33,7 @@ public class Enemy_property : MonoBehaviour
     public float Energy1 { get => Energy; set => Energy = value; }
     public float Max_Energy1 { get => Max_Energy; set => Max_Energy = value; }
     public float EnergySpeed1 { get => EnergySpeed; set => EnergySpeed = value; }
+    public float Cost1 { get => Cost; set => Cost = value; }
 
     void Start()
     {
@@ -43,7 +45,7 @@ public class Enemy_property : MonoBehaviour
     {
         
     }
-    protected void Set_Property()    //if enemy lv>lv1   it's property will be changed
+    protected void Set_Level()    //if enemy lv>lv1   it's property will be changed
     {
        
         if(Lv==2)
